@@ -1,0 +1,382 @@
+{% extends "employee/base_site.html" %}
+
+{% block title %} Chart JS {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>Data Visualization <small>Analyze global information</small></h3>
+        </div>
+
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+      <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Bad Loan Graph <small>Sessions</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Settings 1</a>
+                              </li>
+                              <li><a href="#">Settings 2</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                            <div id="c430d20a-0f30-402b-8498-269893a56509" style="width: 100%; height: 100%;" class="plotly-graph-div"></div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Loan Status by Region <small>Sessions</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Settings 1</a>
+                              </li>
+                              <li><a href="#">Settings 2</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                            <div id="776b5f17-831f-4857-b416-b479f7fadd51" style="width: 100%; height: 100%;" class="plotly-graph-div"></div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Condition of Loan by Purpose <small>Sessions</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Settings 1</a>
+                              </li>
+                              <li><a href="#">Settings 2</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                            <div id="89fa4c06-142c-4e54-b7c9-dba1266e8cca" style="width: 100%; height: 100%;" class="plotly-graph-div"></div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Issuance of Loans<small>Sessions</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Settings 1</a>
+                              </li>
+                              <li><a href="#">Settings 2</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                            <div id="25f17fbf-5336-450b-a29d-e47379c08590" style="width: 800px; height: 800px;" class="plotly-graph-div"></div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+
+
+      <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Bad/Good Ratio  (By Purpose)<small>Sessions</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Settings 1</a>
+                              </li>
+                              <li><a href="#">Settings 2</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                            
+<div id="d63ee044-3e9a-49fc-b5d7-b60f9049626f" style="width: 100%; height: 100%;" class="plotly-graph-div"></div>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+    </div>
+    </div>
+        
+
+
+
+    
+        
+        
+        
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+    <!-- Chart.js -->
+    <script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="/static/vendors/Chart.js/dist/plotlyjs-bundle.js"></script>
+    <script type="text/javascript" src="/static/vendors/Chart.js/dist/figure.js"></script>
+    <script type="text/javascript">
+        (function(){
+            window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+            var gd = document.getElementById('c430d20a-0f30-402b-8498-269893a56509')
+            var resizeDebounce = null;
+
+            function resizePlot() {
+                var bb = gd.getBoundingClientRect();
+                Plotly.relayout(gd, {
+                    width: bb.width,
+                    height: bb.height
+                });
+            }
+
+            
+            window.addEventListener('resize', function() {
+                if (resizeDebounce) {
+                    window.clearTimeout(resizeDebounce);
+                }
+                resizeDebounce = window.setTimeout(resizePlot, 100);
+            });
+            
+
+            
+            Plotly.plot(gd,  {
+                data: figure.data,
+                layout: figure.layout,
+                frames: figure.frames,
+                config: {"showLink": true, "linkText": "Export to plot.ly", "mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A"}
+            });
+            
+       }());
+    </script>
+
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/plotlyjs-bundle1.js"></script>
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/figure1.js"></script>
+    
+    <script type="text/javascript">
+        (function(){
+            window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+            var gd = document.getElementById('776b5f17-831f-4857-b416-b479f7fadd51')
+            var resizeDebounce = null;
+
+            function resizePlot() {
+                var bb = gd.getBoundingClientRect();
+                Plotly.relayout(gd, {
+                    width: bb.width,
+                    height: bb.height
+                });
+            }
+
+            
+            window.addEventListener('resize', function() {
+                if (resizeDebounce) {
+                    window.clearTimeout(resizeDebounce);
+                }
+                resizeDebounce = window.setTimeout(resizePlot, 100);
+            });
+            
+
+            
+            Plotly.plot(gd,  {
+                data: figure.data,
+                layout: figure.layout,
+                frames: figure.frames,
+                config: {"showLink": true, "linkText": "Export to plot.ly", "mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A"}
+            });
+            
+       }());
+    </script>
+
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/plotlyjs-bundle6.js"></script>        
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/figure6.js"></script>
+
+<script type="text/javascript">
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd = document.getElementById('89fa4c06-142c-4e54-b7c9-dba1266e8cca')
+        var resizeDebounce = null;
+
+        function resizePlot() {
+            var bb = gd.getBoundingClientRect();
+            Plotly.relayout(gd, {
+                width: bb.width,
+                height: bb.height
+            });
+        }
+
+        
+        window.addEventListener('resize', function() {
+            if (resizeDebounce) {
+                window.clearTimeout(resizeDebounce);
+            }
+            resizeDebounce = window.setTimeout(resizePlot, 100);
+        });
+        
+
+        
+        Plotly.plot(gd,  {
+            data: figure.data,
+            layout: figure.layout,
+            frames: figure.frames,
+            config: {"showLink": true, "linkText": "Export to plot.ly", "mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A"}
+        });
+        
+   }());
+</script>
+
+
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/plotlyjs-bundle7.js"></script>
+            
+            
+        <script type="text/javascript" src="/static/vendors/Chart.js/dist/figure7.js"></script>
+
+
+<script type="text/javascript">
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd = document.getElementById('25f17fbf-5336-450b-a29d-e47379c08590')
+        var resizeDebounce = null;
+
+        function resizePlot() {
+            var bb = gd.getBoundingClientRect();
+            Plotly.relayout(gd, {
+                width: bb.width,
+                height: bb.height
+            });
+        }
+
+        
+
+        
+        Plotly.plot(gd,  {
+            data: figure.data,
+            layout: figure.layout,
+            frames: figure.frames,
+            config: {"showLink": true, "linkText": "Export to plot.ly", "mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A"}
+        });
+        
+   }());
+</script>
+
+
+
+
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/plotlyjs-bundle8.js"></script>
+            
+            
+<script type="text/javascript" src="/static/vendors/Chart.js/dist/figure8.js"></script>
+<script type="text/javascript">
+    (function(){
+        window.PLOTLYENV={'BASE_URL': 'https://plot.ly'};
+
+        var gd = document.getElementById('d63ee044-3e9a-49fc-b5d7-b60f9049626f')
+        var resizeDebounce = null;
+
+        function resizePlot() {
+            var bb = gd.getBoundingClientRect();
+            Plotly.relayout(gd, {
+                width: bb.width,
+                height: bb.height
+            });
+        }
+
+        
+        window.addEventListener('resize', function() {
+            if (resizeDebounce) {
+                window.clearTimeout(resizeDebounce);
+            }
+            resizeDebounce = window.setTimeout(resizePlot, 100);
+        });
+        
+
+        
+        Plotly.plot(gd,  {
+            data: figure.data,
+            layout: figure.layout,
+            frames: figure.frames,
+            config: {"showLink": true, "linkText": "Export to plot.ly", "mapboxAccessToken": "pk.eyJ1IjoiY2hyaWRkeXAiLCJhIjoiY2lxMnVvdm5iMDA4dnhsbTQ5aHJzcGs0MyJ9.X9o_rzNLNesDxdra4neC_A"}
+        });
+        
+   }());
+</script>
+
+{% endblock javascripts %}

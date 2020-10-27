@@ -1,0 +1,1080 @@
+{% extends "employee/base_site.html" %}
+
+{% block title %} Loan Application {% endblock title %}
+
+{% block content %}
+<script type="text/javascript">
+  function myChangeFunction() {
+    var loan_amount_ = document.getElementById('loan_amount');
+    //alert(loan_amount_.value);
+    var term_ = document.getElementById('term');
+    var installment_ = document.getElementById('installment');
+    var interest_rate_ = document.getElementById('interest_rate');
+    installment_.value = (loan_amount_.value  / term_.value ) * (1.0 + (interest_rate_.value / 100.0));
+  }
+  /*
+  function displayRadioValue() { 
+      var ele = document.getElementsByName('grade'); 
+        
+      for(i = 0; i < ele.length; i++) { 
+          if(ele[i].checked) 
+          document.getElementById("result").innerHTML
+                  = "Gender: "+ele[i].value; 
+      } 
+  } 
+  */
+</script>
+
+
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>Credit Bank Loan Application</h3>
+        </div>
+
+        
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="row">
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Application <small>Online </small></h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+
+              <!-- Smart Wizard -->
+              <p>Please fill up with correct information. We will verify all information provided here.</p>
+              <div id="wizard" class="form_wizard wizard_horizontal">
+                <ul class="wizard_steps">
+                  <li>
+                    <a href="#step-1">
+                      <span class="step_no">1</span>
+                      <span class="step_descr">
+                                        Step 1<br />
+                                        <small>Basic Information</small>
+                                    </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#step-2">
+                      <span class="step_no">2</span>
+                      <span class="step_descr">
+                                        Step 2<br />
+                                        <small>Account Details</small>
+                                    </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#step-3">
+                      <span class="step_no">3</span>
+                      <span class="step_descr">
+                                        Step 3<br />
+                                        <small>Transaction History</small>
+                                    </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#step-4">
+                      <span class="step_no">4</span>
+                      <span class="step_descr">
+                                        Step 4<br />
+                                        <small>Debt Settlement</small>
+                                    </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#step-5">
+                      <span class="step_no">5</span>
+                      <span class="step_descr">
+                                        Step 5<br />
+                                        <small>Secondary Applicant</small>
+                                    </span>
+                    </a>
+                  </li>
+                </ul>
+
+                <div id="step-1">
+                  <form class="form-horizontal form-label-left">
+                    <div align="center">
+                      <h2><label>Loan Details </label></h2>
+                    </div> 
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="loan_amount">Loan Amount <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input onchange="myChangeFunction()" type="text" title="Amount of loan needed in BDT" id="loan_amount" value={{ loan_app.loan_amount.0 }} readonly class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="term">Number of Terms <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input onchange="myChangeFunction()" type="number" title="Number of terms" id="term" value={{ loan_app.term.0 }} readonly class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="interest_rate">Interest Rate (%)
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="interest_rate" value={{ loan_app.interest_rate.0 }} readonly class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="installment">Installment amount 
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="installment" value={{ loan_app.installment.0 }} readonly class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <!--//TODO: grade radio button-->
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="grade">Grade <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <p>
+                          {% if loan_app.grade.0 == "C" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" disabled="disabled"/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" disabled="disabled"/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" checked=""/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" disabled="disabled"/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" disabled="disabled"/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" disabled="disabled"/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" disabled="disabled"/> G &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.grade.0 == "A" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" checked=""/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" disabled="disabled"/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" disabled="disabled"/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" disabled="disabled"/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" disabled="disabled"/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" disabled="disabled"/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" disabled="disabled"/> G &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.grade.0 == "B" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" disabled="disabled"/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" checked=""/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" disabled="disabled"/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" disabled="disabled"/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" disabled="disabled"/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" disabled="disabled"/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" disabled="disabled"/> G &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.grade.0 == "D" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" disabled="disabled"/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" disabled="disabled"/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" disabled="disabled"/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" checked=""/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" disabled="disabled"/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" disabled="disabled"/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" disabled="disabled"/> G &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.grade.0 == "E" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" disabled="disabled"/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" disabled="disabled"/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" disabled="disabled"/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" disabled="disabled"/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" checked=""/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" disabled="disabled"/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" disabled="disabled"/> G &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.grade.0 == "F" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" disabled="disabled"/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" disabled="disabled"/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" disabled="disabled"/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" disabled="disabled"/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" disabled="disabled"/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" checked=""/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" disabled="disabled"/> G &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.grade.0 == "G" %}
+                          <input type="radio" class="flat" name="grade" id="gradeA" value="A" disabled="disabled"/> A &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeB" value="B" disabled="disabled"/> B &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeC" value="C" disabled="disabled"/> C &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeD" value="D" disabled="disabled"/> D &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeE" value="E" disabled="disabled"/> E &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeF" value="F" disabled="disabled"/> F &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="grade" id="gradeG" value="G" checked=""/> G &nbsp;&nbsp;
+                          {% endif %}
+                        </p>
+
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="purpose">Purpose <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" title="State your purpose here" id="purpose" value={{ loan_app.purpose.0 }} readonly class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <!--SKIPPED : 'verification_status'-->
+                    <!--SKIPPED : 'pymnt_plan'-->
+                    <!--SKIPPED : 'dti'-->
+
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="open_acc">Open Accounts<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="open_acc" value={{ loan_app.open_acc.0 }} readonly class="form-control col-md-7 col-xs-12" title="The number of open credit lines in your credit file" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="total_acc">Total Accounts<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="total_acc" value={{ loan_app.total_acc.0 }} readonly class="form-control col-md-7 col-xs-12" title="The total number of credit lines currently in your credit file" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="bc_open_to_buy">Bankcard open to buy<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="bc_open_to_buy" value={{ loan_app.bc_open_to_buy.0 }} readonly class="form-control col-md-7 col-xs-12" title="Total open to buy on revolving bankcards" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pct_tl_nvr_dlq">Percent of trades never delinquent<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="pct_tl_nvr_dlq" value={{ loan_app.pct_tl_nvr_dlq.0 }} readonly title="Percent of trades never delinquent" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tot_hi_cred_lim">Total credit limit
+<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="tot_hi_cred_lim" value={{ loan_app.tot_hi_cred_lim.0 }} readonly title="Total high credit/credit limit" class="form-control col-md-7 col-xs-12">
+                       </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="total_bal_ex_mort">Credit balance without mortgage<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="total_bal_ex_mort" value={{ loan_app.total_bal_ex_mort.0 }} readonly title="Total credit balance excluding mortgage" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="total_bc_limit">Bankcard credit limit<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="total_bc_limit" value={{ loan_app.total_bc_limit.0 }} readonly title="Total bankcard high credit/credit limit" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="total_il_high_credit_limit">Total installment credit limit<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="total_il_high_credit_limit" value={{ loan_app.total_il_high_credit_limit.0 }} readonly title="Total installment high credit/credit limit" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="disbursement_method">Loan receive method<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <!--<input type="text" id="disbursement_method" required="required" title="The method by which the borrower receives their loan. Possible values are: CASH, DIRECT_PAY etc" class="form-control col-md-7 col-xs-12">-->
+                        <p>
+                          {% if loan_app.disbursement_method.0 == "CASH" %}
+                          <input type="radio" class="flat" name="disbursement_method" id="disbursement_methodA" value="CASH" checked=""/> Cash &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="disbursement_method" id="disbursement_methodB" value="DIRECT_PAY" disabled="disabled"/> Direct Pay &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.disbursement_method.0 == "DIRECT_PAY" %}
+                          <input type="radio" class="flat" name="disbursement_method" id="disbursement_methodA" value="CASH" disabled="disabled"/> Cash &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="disbursement_method" id="disbursement_methodB" value="DIRECT_PAY" checked=""/> Direct Pay &nbsp;&nbsp;
+                          {% endif %}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="acc_open_past_24mths">Trades opened in past 24 months<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="acc_open_past_24mths" value={{ loan_app.acc_open_past_24mths.0 }} readonly title="Number of trades opened in past 24 months" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="chargeoff_within_12_mths">Charge-offs within 12 months<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="chargeoff_within_12_mths" value={{ loan_app.chargeoff_within_12_mths.0 }} readonly title="A charge-off or charge-off is the declaration by a creditor (usually a credit card account) that an amount of debt is unlikely to be collected. This occurs when a consumer becomes severely delinquent on a debt" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mo_sin_old_il_acct">Oldest installment account time<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="mo_sin_old_il_acct" value={{ loan_app.mo_sin_old_il_acct.0 }} readonly title="Months since oldest bank installment account opened" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    &nbsp;
+                    <div align="center">
+                      <h2><label>Personal Details </label></h2>
+                    </div> 
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="home_ownership">Home Ownership<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <!--<input type="text" id="home_ownership"  required="required" title="Own, Rent, Mortgage etc" class="form-control col-md-7 col-xs-12">-->
+
+                        <p>
+                          {% if loan_app.home_ownership.0 == "MORTGAGE" %}
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipA" value="MORTGAGE" checked="" /> Mortgage &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipB" value="OWN" disabled="disabled"/> Own &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipC" value="RENT" disabled="disabled"/> Rent &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipD" value="ANY" disabled="disabled"/> Other &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.home_ownership.0 == "OWN" %}
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipA" value="MORTGAGE" disabled="disabled"/> Mortgage &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipB" value="OWN" checked=""/> Own &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipC" value="RENT" disabled="disabled"/> Rent &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipD" value="ANY" disabled="disabled"/> Other &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.home_ownership.0 == "RENT" %}
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipA" value="MORTGAGE" disabled="disabled"/> Mortgage &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipB" value="OWN" disabled="disabled"/> Own &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipC" value="RENT" checked="" /> Rent &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipD" value="ANY" disabled="disabled"/> Other &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.home_ownership.0 == "ANY" %}
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipA" value="MORTGAGE" disabled="disabled"/> Mortgage &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipB" value="OWN" disabled="disabled"/> Own &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipC" value="RENT" disabled="disabled"/> Rent &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="home_ownership" id="home_ownershipD" value="ANY" checked="" /> Other &nbsp;&nbsp;
+                          {% endif %}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="annual_income">Annual Income<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="annual_income" value={{ loan_app.mo_sin_old_il_acct.0 }} readonly title="Annual Income in BDT" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pub_rec_bankruptcies">Public Record Bankruptcies<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="pub_rec_bankruptcies" value={{ loan_app.pub_rec_bankruptcies.0 }} readonly title="Number of public record bankruptcies" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tax_liens">Tax Lines<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="tax_liens" value={{ loan_app.tax_liens.0 }} readonly title="Number of tax liens" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="addr_state">Address State<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="addr_state" value={{ loan_app.addr_state.0 }} readonly title="Address state" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mths_since_last_record">Last public record time<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="mths_since_last_record" value={{ loan_app.mths_since_last_record.0 }} readonly title="The number of months since the last public record" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pub_rec">Derogatory public records<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="pub_rec" value={{ loan_app.pub_rec.0 }} readonly title="Number of derogatory public records" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div id="step-2">
+                  <form class="form-horizontal form-label-left">
+
+                      <div align="center">
+                        <h2><label>Account Details </label></h2>
+                      </div> 
+                        <div class="form-group">
+                            <label for="num_il_tl" class="control-label col-md-3 col-sm-3 col-xs-12">Installment Accounts <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input title="Number of installment accounts" id="num_il_tl" value={{ loan_app.num_il_tl.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label for="num_sats" class="control-label col-md-3 col-sm-3 col-xs-12">Satisfactory Accounts <span class="required">*</span></label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input title="Number of satisfactory accounts" id="num_sats" value={{ loan_app.num_sats.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="avg_cur_bal" class="control-label col-md-3 col-sm-3 col-xs-12">Average Current Balance <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input title="Average current balance of all accounts" id="avg_cur_bal" value={{ loan_app.avg_cur_bal.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                </div>
+                              </div>
+
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mo_sin_rcnt_tl">Account Opened <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input title="Months since most recent account opened" type="number" id="mo_sin_rcnt_tl" name="last-name" value={{ loan_app.mo_sin_rcnt_tl.0 }} readonly class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num_tl_op_past_12m" class="control-label col-md-3 col-sm-3 col-xs-12">Accounts Opened(12 months) <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input title="Number of accounts opened in past 12 months" id="num_tl_op_past_12m" value={{ loan_app.num_tl_op_past_12m.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="num_accts_ever_120_pd" class="control-label col-md-3 col-sm-3 col-xs-12">Accounts with Past Due <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input title="Number of accounts over 120 or more days past due" id="num_accts_ever_120_pd" value={{ loan_app.num_accts_ever_120_pd.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                          </div>
+                        </div>
+
+                      <div class="form-group">
+                          <label for="bc_util" class="control-label col-md-3 col-sm-3 col-xs-12">BC Ratio <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input title="Ratio of total current balance to high credit/credit limit for all bankcard accounts" id="bc_util" value={{ loan_app.bc_util.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                          </div>
+                        </div>
+                       
+                          <div class="form-group">
+                              <label for="mort_acc" class="control-label col-md-3 col-sm-3 col-xs-12">Mortgage Accounts <span class="required">*</span></label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input title="Number of mortgage accounts" id="mort_acc" value={{ loan_app.mort_acc.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                              </div>
+                            </div>
+
+                    <div class="form-group">
+                        <label for="mths_since_recent_bc" class="control-label col-md-3 col-sm-3 col-xs-12">Bankcard Account Opened <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input title="Months since most recent bankcard account opened" id="mths_since_recent_bc" value={{ loan_app.mths_since_recent_bc.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="mths_since_recent_bc_dlq" class="control-label col-md-3 col-sm-3 col-xs-12">Bankcard Delinquency <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input title="Months since most recent bankcard delinquency" id="mths_since_recent_bc_dlq" value={{ loan_app.mths_since_recent_bc_dlq.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                          </div>
+                        </div>
+                        
+                         
+
+                            <div class="form-group">
+                                <label for="num_actv_bc_tl" class="control-label col-md-3 col-sm-3 col-xs-12">Active Bankcard Accounts <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input title="Number of currently active bankcard accounts" id="num_actv_bc_tl" value={{ loan_app.num_actv_bc_tl.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                </div>
+                              </div>
+                              
+                          
+
+                    
+                        
+                          <div class="form-group">
+                              <label for="num_bc_tl" class="control-label col-md-3 col-sm-3 col-xs-12">Bankcard Accounts <span class="required">*</span></label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input title="Number of bankcard accounts" id="num_bc_tl" value={{ loan_app.num_bc_tl.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                              </div>
+                            </div>
+                          <div class="form-group">
+                              <label for="num_bc_sats" class="control-label col-md-3 col-sm-3 col-xs-12">Satisfactory Bankcard Accounts <span class="required">*</span></label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input title="Number of satisfactory bankcard accounts" id="num_bc_sats" value={{ loan_app.num_bc_sats.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mths_since_recent_inq">Recent Inquiry <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input  title="Months since most recent inquiry" type="number" id="mths_since_recent_inq" value={{ loan_app.mths_since_recent_inq.0 }} readonly class="form-control col-md-7 col-xs-12">
+                                </div>
+                              </div>
+
+                          
+                              <div class="form-group">
+                                  <label for="inq_last_6mths" class="control-label col-md-3 col-sm-3 col-xs-12">Inquiries in Past 6 Months <span class="required">*</span></label>
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input title="The number of inquiries in past 6 months (excluding auto and mortgage inquiries)" id="inq_last_6mths" value={{ loan_app.inq_last_6mths.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                  </div>
+                                </div>
+                        
+                            &nbsp;
+                            <div align="center">
+                              <h2><label>Revolving Account </label></h2>
+                            </div> 
+
+                            <div class="form-group">
+                                <label for="num_rev_accts" class="control-label col-md-3 col-sm-3 col-xs-12">Revolving Accounts <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input title="Number of revolving accounts" id="num_rev_accts" value={{ loan_app.num_rev_accts.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                </div>
+                              </div>
+
+                            <div class="form-group">
+                                <label for="num_op_rev_tl" class="control-label col-md-3 col-sm-3 col-xs-12">Open Revolving Accounts <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input title="Number of open revolving accounts" id="num_op_rev_tl" value={{ loan_app.num_op_rev_tl.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="mo_sin_old_rev_tl_op" class="control-label col-md-3 col-sm-3 col-xs-12">Oldest Revolving Account Opened <span class="required">*</span></label>
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input title="Months since oldest revolving account opened" id="mo_sin_old_rev_tl_op" value={{ loan_app.mo_sin_old_rev_tl_op.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mo_sin_rcnt_rev_tl_op" class="control-label col-md-3 col-sm-3 col-xs-12">Recent Revolving Account Opened <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                      <input title="Months since most recent revolving account opened" id="mo_sin_rcnt_rev_tl_op" value={{ loan_app.mo_sin_rcnt_rev_tl_op.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="revol_bal_joint" class="control-label col-md-3 col-sm-3 col-xs-12">Sum of Revolving Credit Balance(co-borrowers) <span class="required">*</span></label>
+                                      <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input title="Sum of revolving credit balance of the co-borrowers, net of duplicate balances" id="revol_bal_joint" value={{ loan_app.revol_bal_joint.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mths_since_recent_revol_delinq" class="control-label col-md-3 col-sm-3 col-xs-12">Revolving Delinquency <span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input title="Months since most recent revolving delinquency" id="mths_since_recent_revol_delinq" value={{ loan_app.mths_since_recent_revol_delinq.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="num_actv_rev_tl" class="control-label col-md-3 col-sm-3 col-xs-12">Currently Active Revolving Trades <span class="required">*</span></label>
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input title="Number of currently active revolving trades" id="num_actv_rev_tl" value={{ loan_app.num_actv_rev_tl.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                          </div>
+                                        </div>
+    
+                  </form>
+                </div>
+
+                <div id="step-3">
+                  <form class="form-horizontal form-label-left">
+                   <!----------------------------------------------------------------------------------------------------------------------->
+                   <div align="center">
+                      <h2><label>Transaction history </label></h2>
+                    </div> 
+
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                     <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="open_act_il">Number of active installments <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="open_act_il" value={{ loan_app.open_act_il.0 }} readonly class="form-control col-md-7 col-xs-12" title="Number of currently active installments">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="delinq_amnt">Delinquency amount :<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="delinq_amnt" value={{ loan_app.delinq_amnt.0 }} readonly class="form-control col-md-7 col-xs-12" title="The past-due amount owed for the accounts on which the borrower is now delinquent.">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="percent_bc_gt_75" class="control-label col-md-3 col-sm-3 col-xs-12">75% off limit bankcard accounts </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="percent_bc_gt_75" value={{ loan_app.percent_bc_gt_75.0 }} readonly class="form-control col-md-7 col-xs-12" title="Percentage of all bankcard accounts > 75% of limit">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="delinq_2yrs" class="control-label col-md-3 col-sm-3 col-xs-12">Number of accounts deliquent for 30 days in past 2 years<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="delinq_2yrs" value={{ loan_app.delinq_2yrs.0 }} readonly class="form-control col-md-7 col-xs-12" title="The number of 30+ days past-due incidences of delinquency in the borrower's credit file for the past 2 years">
+                      </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mths_since_last_delinq">Months since last deliquency<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="mths_since_last_delinq" value={{ loan_app.mths_since_last_delinq.0 }} readonly class="form-control col-md-7 col-xs-12" title="he number of months since the last delinquency.">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="revol_bal">Revolving balance<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="revol_bal" value={{ loan_app.revol_bal.0 }} readonly class="form-control col-md-7 col-xs-12" title="Total credit revolving balance">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="revol_util" class="control-label col-md-3 col-sm-3 col-xs-12">Revolving line utilization rate </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="revol_util" value={{ loan_app.revol_util.0 }} readonly class="form-control col-md-7 col-xs-12" title="Revolving line utilization rate, or the amount of credit the borrower is using relative to all available revolving credit.">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="num_rev_tl_bal_gt_0" class="control-label col-md-3 col-sm-3 col-xs-12">Number of revolving trades with balance >0<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="num_rev_tl_bal_gt_0" value={{ loan_app.num_rev_tl_bal_gt_0.0 }} readonly class="form-control col-md-7 col-xs-12" title="Number of revolving trades with balance >0">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="num_tl_120dpd_2m">120 days past due accounts in last 2 months<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="num_tl_120dpd_2m" value={{ loan_app.num_tl_120dpd_2m.0 }} readonly class="form-control col-md-7 col-xs-12" title="Number of accounts currently 120 days past due (updated in past 2 months)">
+                      </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="num_tl_30dpd">30 days past due accounts in last 2 months<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="num_tl_30dpd" value={{ loan_app.num_tl_30dpd.0 }} readonly class="form-control col-md-7 col-xs-12" title="Number of accounts currently 30 days past due (updated in past 2 months)">
+                      </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                      <label for="num_tl_90g_dpd_24m" class="control-label col-md-3 col-sm-3 col-xs-12">90 days past due accounts in last 24 months</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="num_tl_90g_dpd_24m" value={{ loan_app.num_tl_90g_dpd_24m.0 }} readonly class="form-control col-md-7 col-xs-12" title="Number of accounts 90 or more days past due in last 24 months">
+                      </div>
+                    </div>
+                   <!----------------------------------------------------------------------------------------------------------------------->
+                   &nbsp;
+                   <div align="center">
+                     <h2><label>Hardship Plan </label></h2>
+                   </div> 
+                   <!----------------------------------------------------------------------------------------------------------------------->
+                   <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hardship_flag">Are you currently in any hardship plan?<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <p>
+                          {% if loan_app.hardship_flag.0 == "Y" %}
+                          <input type="radio" class="flat" name="hardship_flag" id="Y" value="Y" checked=""  /> Yes &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="hardship_flag" id="N" value="N" disabled="disabled"/> No &nbsp;&nbsp;
+                          {% endif %}
+                          {% if loan_app.hardship_flag.0 == "N" %}
+                          <input type="radio" class="flat" name="hardship_flag" id="Y" value="Y" disabled="disabled"/> Yes &nbsp;&nbsp;
+                          <input type="radio" class="flat" name="hardship_flag" id="N" value="N" checked=""  /> No &nbsp;&nbsp;
+                          {% endif %}
+                        </p>
+                      </div>
+                    </div>
+                   <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                      <label for="hardship_type" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship type</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="hardship_type" value={{ loan_app.hardship_type.0 }} readonly class="form-control col-md-7 col-xs-12" title="Describe your hardship plan type">
+                      </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                      <label for="hardship_reason" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship reason</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="hardship_reason" value={{ loan_app.hardship_reason.0 }} readonly class="form-control col-md-7 col-xs-12" title="Describes the reason the hardship plan was offered.">
+                      </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_status" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship status</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <p>
+                              {% if loan_app.hardship_status.0 == "Active" %}
+                              <input type="radio" class="flat" name="hardship_status" id="Active" value="Active" checked=""> &nbsp; Active &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Pending" value="Pending" disabled="disabled"> Pending
+                              <input type="radio" class="flat" name="hardship_status" id="Canceled" value="Canceled" disabled="disabled"> &nbsp; Canceled &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Completed" value="Completed" disabled="disabled"> &nbsp; Completed &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Broken" value="Broken" disabled="disabled"> &nbsp; Broken &nbsp;
+                              {% endif %}
+                              {% if loan_app.hardship_status.0 == "Pending" %}
+                              <input type="radio" class="flat" name="hardship_status" id="Active" value="Active" disabled="disabled"> &nbsp; Active &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Pending" value="Pending" checked=""> Pending
+                              <input type="radio" class="flat" name="hardship_status" id="Canceled" value="Canceled" disabled="disabled"> &nbsp; Canceled &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Completed" value="Completed" disabled="disabled"> &nbsp; Completed &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Broken" value="Broken" disabled="disabled"> &nbsp; Broken &nbsp;
+                              {% endif %}
+                              {% if loan_app.hardship_status.0 == "Canceled" %}
+                              <input type="radio" class="flat" name="hardship_status" id="Active" value="Active" disabled="disabled"> &nbsp; Active &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Pending" value="Pending" disabled="disabled"> Pending
+                              <input type="radio" class="flat" name="hardship_status" id="Canceled" value="Canceled" checked=""> &nbsp; Canceled &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Completed" value="Completed" disabled="disabled"> &nbsp; Completed &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Broken" value="Broken" disabled="disabled"> &nbsp; Broken &nbsp;
+                              {% endif %}
+                              {% if loan_app.hardship_status.0 == "Completed" %}
+                              <input type="radio" class="flat" name="hardship_status" id="Active" value="Active" disabled="disabled"> &nbsp; Active &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Pending" value="Pending" disabled="disabled"> Pending
+                              <input type="radio" class="flat" name="hardship_status" id="Canceled" value="Canceled" disabled="disabled" > &nbsp; Canceled &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Completed" value="Completed" checked=""> &nbsp; Completed &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Broken" value="Broken" disabled="disabled"> &nbsp; Broken &nbsp;
+                              {% endif %}
+                              {% if loan_app.hardship_status.0 == "Broken" %}
+                              <input type="radio" class="flat" name="hardship_status" id="Active" value="Active" disabled="disabled"> &nbsp; Active &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Pending" value="Pending" disabled="disabled"> Pending
+                              <input type="radio" class="flat" name="hardship_status" id="Canceled" value="Canceled" disabled="disabled" > &nbsp; Canceled &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Completed" value="Completed" disabled="disabled"> &nbsp; Completed &nbsp;
+                              <input type="radio" class="flat" name="hardship_status" id="Broken" value="Broken" checked=""> &nbsp; Broken &nbsp;
+                              {% endif %}
+                            </p>                      
+                        </div>
+                      </div>
+                      <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="deferral_term" class="control-label col-md-3 col-sm-3 col-xs-12">Deferral terms</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="deferral_term" value={{ loan_app.deferral_term.0 }} readonly class="form-control col-md-7 col-xs-12" title="Amount of months that the borrower is expected to pay less than the contractual monthly payment amount due to a hardship plan.">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_amount" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship amount</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="hardship_amount" value={{ loan_app.hardship_amount.0 }} readonly class="form-control col-md-7 col-xs-12" title="The interest payment that had been committed to make each month while they are on a hardship plan.">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_start_date" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship start date</label>
+                        
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="hardship_start_date" value={{ loan_app.hardship_start_date.0 }} readonly class="form-control col-md-7 col-xs-12" title="The start date of the hardship plan period.">
+                        </div>
+                        
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_end_date" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship end date</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="hardship_end_date" value={{ loan_app.hardship_end_date.0 }} readonly class="form-control col-md-7 col-xs-12" title="The end date of the hardship plan period">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="payment_plan_start_date" class="control-label col-md-3 col-sm-3 col-xs-12">Payment plan start date</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="payment_plan_start_date" value={{ loan_app.payment_plan_start_date.0 }} readonly class="form-control col-md-7 col-xs-12" title="The day the first hardship plan payment is due.">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->  
+                    <div class="form-group">
+                        <label for="hardship_length" class="control-label col-md-3 col-sm-3 col-xs-12">Number of hardship months</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="hardship_length" value={{ loan_app.hardship_length.0 }} readonly class="form-control col-md-7 col-xs-12" title="The number of months the borrower will make smaller payments than normally obligated due to a hardship plan.">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_dpd" class="control-label col-md-3 col-sm-3 col-xs-12">Days past from hardship start date</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="hardship_dpd" value={{ loan_app.hardship_dpd.0 }} readonly class="form-control col-md-7 col-xs-12" title="Account days past due as of the hardship plan start date.">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_loan_status" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship Loan Status</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <p>
+                            {% if loan_app.hardship_loan_status.0 == "Late (16-30 days)" %}
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Late (16-30 days)" value="Late (16-30 days)" checked=""> &nbsp; Late (16-30 days) &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="In Grace Period" value="In Grace Period" disabled="disabled"> In Grace Period
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Current" value="Current" disabled="disabled"> &nbsp; Current &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Other" value="Other" disabled="disabled"> &nbsp; Other &nbsp;
+                            {% endif %}
+                            {% if loan_app.hardship_loan_status.0 == "In Grace Period" %}
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Late (16-30 days)" value="Late (16-30 days)" disabled="disabled"checked=""> &nbsp; Late (16-30 days) &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="In Grace Period" value="In Grace Period" checked=""> In Grace Period
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Current" value="Current" disabled="disabled"> &nbsp; Current &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Other" value="Other" disabled="disabled"> &nbsp; Other &nbsp;
+                            {% endif %}
+                            {% if loan_app.hardship_loan_status.0 == "Current" %}
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Late (16-30 days)" value="Late (16-30 days)" disabled="disabled"> &nbsp; Late (16-30 days) &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="In Grace Period" value="In Grace Period" disabled="disabled"> In Grace Period
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Current" value="Current" checked="" > &nbsp; Current &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Other" value="Other" disabled="disabled"> &nbsp; Other &nbsp;
+                            {% endif %}
+                            {% if loan_app.hardship_loan_status.0 == "Other" %}
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Late (16-30 days)" value="Late (16-30 days)" disabled="disabled"> &nbsp; Late (16-30 days) &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="In Grace Period" value="In Grace Period" disabled="disabled"> In Grace Period
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Current" value="Current" disabled="disabled"> &nbsp; Current &nbsp;
+                              <input type="radio" class="flat" name="hardship_loan_status" id="Other" value="Other" checked="" > &nbsp; Other &nbsp;
+                            {% endif %}
+                            </p>
+                        </div>
+                      </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="orig_projected_additional_accrued_interest" class="control-label col-md-3 col-sm-3 col-xs-12">Original projected interest</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="orig_projected_additional_accrued_interest" value={{ loan_app.orig_projected_additional_accrued_interest.0 }} readonly class="form-control col-md-7 col-xs-12" title="The original projected additional interest amount that will accrue for the given hardship payment plan as of the Hardship Start Date. This field will be null if the borrower has broken their hardship payment plan.">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_payoff_balance_amount" class="control-label col-md-3 col-sm-3 col-xs-12">Hardship payoff balance amount</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="hardship_payoff_balance_amount" value={{ loan_app.hardship_payoff_balance_amount.0 }} readonly class="form-control col-md-7 col-xs-12" title="The payoff balance amount as of the hardship plan start date">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                    <div class="form-group">
+                        <label for="hardship_last_payment_amount" class="control-label col-md-3 col-sm-3 col-xs-12">Last hardship payment amount</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="hardship_last_payment_amount" value={{ loan_app.hardship_last_payment_amount.0 }} readonly class="form-control col-md-7 col-xs-12" title="The last payment amount as of the hardship plan start date">
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                  
+                  </form>
+                </div>
+                <div id="step-4">
+                  <form class="form-horizontal form-label-left">
+                        <!----------------------------------------------------------------------------------------------------------------------->
+                        <div align="center">
+                          <h2><label>Debt Settlement </label></h2>
+                        </div> 
+                        <div class="form-group">
+                            <label for="debt_settlement_flag"class="control-label col-md-3 col-sm-3 col-xs-12">Are you currently in any Settlement plan?</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <p>
+                                {% if loan_app.debt_settlement_flag.0 == "Y" %}
+                                  <input type="radio" class="flat" id="Y" name="debt_settlement_flag" value="Y" checked=""> &nbsp; Yes &nbsp;
+                                  <input type="radio" class="flat" id="N" name="debt_settlement_flag" value="N" disabled="disabled"> No
+                                {% endif %}
+                                {% if loan_app.debt_settlement_flag.0 == "N" %}
+                                  <input type="radio" class="flat" id="Y" name="debt_settlement_flag" value="Y" disabled="disabled"> &nbsp; Yes &nbsp;
+                                  <input type="radio" class="flat" id="N" name="debt_settlement_flag" value="N" checked=""> No
+                                {% endif %}
+                              </p>                             
+                            </div>
+                          </div>
+                        <!----------------------------------------------------------------------------------------------------------------------->
+                                  <div class="form-group">
+                            <label for="debt_settlement_flag_date" class="control-label col-md-3 col-sm-3 col-xs-12">Recent date of debt settlement</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="date" id="debt_settlement_flag_date" value={{ loan_app.debt_settlement_flag_date.0 }} readonly class="form-control col-md-7 col-xs-12" title="The most recent date that the Debt_Settlement_Flag has been set.">
+                            </div>
+                        </div>
+                        <!----------------------------------------------------------------------------------------------------------------------->  
+                          <!----------------------------------------------------------------------------------------------------------------------->
+                          <div class="form-group">
+                              <label for="settlement_status" class="control-label col-md-3 col-sm-3 col-xs-12">Settlement status</label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p>
+                                  {% if loan_app.settlement_status.0 == "ACTIVE" %}
+                                  <input type="radio" class="flat" name="settlement_status" id="ACTIVE" value="ACTIVE" checked=""> &nbsp; Active &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="COMPLTE" value="COMPLETE" disabled="disabled" > Complete
+                                  <input type="radio" class="flat" name="settlement_status" id="CANCELLED" value="CANCELLED" disabled="disabled"> &nbsp; Canceled &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="DENIED" value="DENIED" disabled="disabled"> &nbsp; Denied &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="BROKEN" value="BROKEN" disabled="disabled"> &nbsp; Broken &nbsp;
+                                  {% endif %}
+                                  {% if loan_app.settlement_status.0 == "COMPLETE" %}
+                                  <input type="radio" class="flat" name="settlement_status" id="ACTIVE" value="ACTIVE" disabled="disabled" > &nbsp; Active &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="COMPLTE" value="COMPLETE" checked=""> Complete
+                                  <input type="radio" class="flat" name="settlement_status" id="CANCELLED" value="CANCELLED" disabled="disabled"> &nbsp; Canceled &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="DENIED" value="DENIED" disabled="disabled"> &nbsp; Denied &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="BROKEN" value="BROKEN" disabled="disabled"> &nbsp; Broken &nbsp;
+                                  {% endif %}
+                                  {% if loan_app.settlement_status.0 == "CANCELLED" %}
+                                  <input type="radio" class="flat" name="settlement_status" id="ACTIVE" value="ACTIVE" disabled="disabled"> &nbsp; Active &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="COMPLTE" value="COMPLETE" disabled="disabled" > Complete
+                                  <input type="radio" class="flat" name="settlement_status" id="CANCELLED" value="CANCELLED" checked=""> &nbsp; Canceled &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="DENIED" value="DENIED" disabled="disabled"> &nbsp; Denied &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="BROKEN" value="BROKEN" disabled="disabled"> &nbsp; Broken &nbsp;
+                                  {% endif %}
+                                  {% if loan_app.settlement_status.0 == "DENIED" %}
+                                  <input type="radio" class="flat" name="settlement_status" id="ACTIVE" value="ACTIVE" disabled="disabled"> &nbsp; Active &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="COMPLTE" value="COMPLETE" disabled="disabled" > Complete
+                                  <input type="radio" class="flat" name="settlement_status" id="CANCELLED" value="CANCELLED" disabled="disabled"> &nbsp; Canceled &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="DENIED" value="DENIED" checked=""> &nbsp; Denied &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="BROKEN" value="BROKEN" disabled="disabled"> &nbsp; Broken &nbsp;
+                                  {% endif %}
+                                  {% if loan_app.settlement_status.0 == "BROKEN" %}
+                                  <input type="radio" class="flat" name="settlement_status" id="ACTIVE" value="ACTIVE" disabled="disabled"> &nbsp; Active &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="COMPLTE" value="COMPLETE" disabled="disabled" > Complete
+                                  <input type="radio" class="flat" name="settlement_status" id="CANCELLED" value="CANCELLED" disabled="disabled"> &nbsp; Canceled &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="DENIED" value="DENIED" disabled="disabled"> &nbsp; Denied &nbsp;
+                                  <input type="radio" class="flat" name="settlement_status" id="BROKEN" value="BROKEN" checked=""> &nbsp; Broken &nbsp;
+                                  {% endif %}
+                                </p>
+                              </div>
+                            </div>
+                            <!----------------------------------------------------------------------------------------------------------------------->
+                          <!----------------------------------------------------------------------------------------------------------------------->
+                          <div class="form-group">
+                              <label for="settlement_date" class="control-label col-md-3 col-sm-3 col-xs-12">Date of settlement plan</label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="date" id="settlement_date" value={{ loan_app.settlement_date.0 }} readonly class="form-control col-md-7 col-xs-12" title="The date that you agreed to the settlement plan">
+                              </div>
+                          </div>
+                          <!----------------------------------------------------------------------------------------------------------------------->  
+                            <!----------------------------------------------------------------------------------------------------------------------->
+                            <div class="form-group">
+                                <label for="settlement_amount" class="control-label col-md-3 col-sm-3 col-xs-12">Settlement amount</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input type="number" id="settlement_amount" value={{ loan_app.settlement_amount.0 }} readonly class="form-control col-md-7 col-xs-12" title="The loan amount that the borrower has agreed to settle for">
+                                </div>
+                            </div>
+                            <!----------------------------------------------------------------------------------------------------------------------->  
+                            <div class="form-group">
+                                <label for="settlement_percentage" class="control-label col-md-3 col-sm-3 col-xs-12">Settlement percentage</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input type="number" id="settlement_percentage" value={{ loan_app.settlement_percentage.0 }} readonly class="form-control col-md-7 col-xs-12" title="The settlement amount as a percentage of the payoff balance amount on the loan.">
+                                </div>
+                            </div>
+                            <!----------------------------------------------------------------------------------------------------------------------->  
+                            <div class="form-group">
+                                <label for="settlement_term" class="control-label col-md-3 col-sm-3 col-xs-12">Settlement term</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input type="number" id="settlement_term" value={{ loan_app.settlement_term.0 }} readonly class="form-control col-md-7 col-xs-12" title="The number of months that the borrower will be on the settlement plan.">
+                                </div>
+                            </div>
+                            <!----------------------------------------------------------------------------------------------------------------------->  
+                                          
+                    </form>
+                </div>
+                <div id="step-5">
+                    <form class="form-horizontal form-label-left">
+  
+                      <div align="center">
+                        <h2><label>Secondary Applicant Details </label></h2>
+                      </div> 
+  
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sec_app_earliest_cr_line">Earliest Credit Line <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="date" id="sec_app_earliest_cr_line" value={{ loan_app.sec_app_earliest_cr_line.0 }} readonly class="form-control col-md-7 col-xs-12" title="Earliest credit line at time of application for the secondary applicant.">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sec_app_inq_last_6mths">Credit Inquiries in Last 6 Months <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input title="Credit inquiries in the last 6 months at time of application for the secondary applicant" value={{ loan_app.sec_app_inq_last_6mths.0 }} readonly type="number" id="sec_app_inq_last_6mths" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="sec_app_mort_acc" class="control-label col-md-3 col-sm-3 col-xs-12">Mortgage Accounts <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input title="Number of mortgage accounts at time of application for the secondary applicant" value={{ loan_app.sec_app_mort_acc.0 }} readonly id="sec_app_mort_acc" class="form-control col-md-7 col-xs-12" type="number"  name="middle-name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="sec_app_open_acc" class="control-label col-md-3 col-sm-3 col-xs-12">Open Trades <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input title="Number of open trades at time of application for the secondary applicant" value={{ loan_app.sec_app_open_acc.0 }} readonly  id="sec_app_open_acc" class="form-control col-md-7 col-xs-12"  type="number" name="middle-name">
+                          </div>
+                        </div>
+  
+                        <div class="form-group">
+                            <label for="sec_app_revol_util" class="control-label col-md-3 col-sm-3 col-xs-12">Ratio of Balance to High Credit <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input title="Ratio of total current balance to high credit/credit limit for all revolving accounts" value={{ loan_app.sec_app_revol_util.0 }} readonly id="sec_app_revol_util" class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                            </div>
+                          </div>
+  
+  
+                          <div class="form-group">
+                              <label for="sec_app_open_act_il" class="control-label col-md-3 col-sm-3 col-xs-12">Active Installment Trades <span class="required">*</span></label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input title="Number of currently active installment trades at time of application for the secondary applicant" value={{ loan_app.sec_app_open_act_il.0 }} readonly id="sec_app_open_act_il" class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sec_app_num_rev_accts" class="control-label col-md-3 col-sm-3 col-xs-12">Revolving Accounts <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input title="Number of revolving accounts at time of application for the secondary applicant" value={{ loan_app.sec_app_num_rev_accts.0 }} readonly id="sec_app_num_rev_accts" class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="sec_app_chargeoff_within_12_mths" class="control-label col-md-3 col-sm-3 col-xs-12">Charge-offs Within Last 12 Months <span class="required">*</span></label>
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input title="Number of charge-offs within last 12 months at time of application for the secondary applicant" id="sec_app_chargeoff_within_12_mths" value={{ loan_app.sec_app_chargeoff_within_12_mths.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sec_app_collections_12_mths_ex_med" class="control-label col-md-3 col-sm-3 col-xs-12">Collections Within Last 12 Months <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                      <input title="Number of collections within last 12 months excluding medical collections at time of application for the secondary applicant" id="sec_app_collections_12_mths_ex_med" value={{ loan_app.sec_app_collections_12_mths_ex_med.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="sec_app_mths_since_last_major_derog" class="control-label col-md-3 col-sm-3 col-xs-12"> Recent 90-day or Worse Rating <span class="required">*</span></label>
+                                      <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input title=" Months since most recent 90-day or worse rating at time of application for the secondary applicant" id="sec_app_mths_since_last_major_derog" value={{ loan_app.sec_app_mths_since_last_major_derog.0 }} readonly class="form-control col-md-7 col-xs-12" type="number" name="middle-name">
+                                      </div>
+                                    </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- End SmartWizard Content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super}}
+  <!-- jQuery Smart Wizard -->
+  <script src="/static/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+{% endblock javascripts %}

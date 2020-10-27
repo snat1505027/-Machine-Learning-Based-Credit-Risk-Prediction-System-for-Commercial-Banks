@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Review Form</title>
+
+
+    <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+    <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+
+    <style>
+        .table-editable {
+            position: relative;
+        }
+
+        .table-editable .glyphicon {
+            font-size: 20px;
+        }
+
+        .table-remove {
+            color: #700;
+            cursor: pointer;
+        }
+
+        .table-remove:hover {
+            color: #f00;
+        }
+
+        .table-up,
+        .table-down {
+            color: #007;
+            cursor: pointer;
+        }
+
+        .table-up:hover,
+        .table-down:hover {
+            color: #00f;
+        }
+
+        .table-add {
+            color: #070;
+            cursor: pointer;
+            position: absolute;
+            top: 8px;
+            right: 0;
+        }
+
+        .table-add:hover {
+            color: #0b0;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Review Form</h1>
+        <p>Add necessary fields or <strong>remove</strong> some field to fit data to Machine Learning API</p>
+
+        
+
+        <div id="table" class="table-editable">
+        <form action="{% url 'update' loan.account_id.pk %}" method="post">
+            {% csrf_token %}
+            <span class="table-add glyphicon glyphicon-plus"></span>
+            <table class="table">
+                <tr>
+                    <th>Field</th>
+                    <th>Data</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td contenteditable="false">Account ID</td>
+                    <td contenteditable="false">{{ loan.account_id.pk }}</td>
+                    <td>
+                    <span class="table-remove glyphicon glyphicon-remove"></a></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td contenteditable="false">Monthly Income</td>
+                    <td contenteditable="true">{{ loan.monthly_income }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td contenteditable="false">Monthly Expenditure</td>
+                    <td contenteditable="true">{{ loan.monthly_expenditure }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td contenteditable="false">Total Asset</td>
+                    <td contenteditable="true">{{ loan.total_asset }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td contenteditable="false">Car Price</td>
+                    <td contenteditable="true">{{ loan.car_price }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td contenteditable="false">Requested Loan Amount</td>
+                    <td contenteditable="true">{{ loan.requested_loan_amount }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td contenteditable="false">Car Condition</td>
+                    <td contenteditable="true">{{ loan.car_condition }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td contenteditable="false">Car Vendor</td>
+                    <td contenteditable="true"><input name="vendorname" style="display: transparent; border: transparent" value={{ loan.car_vendor }}></td>
+                    <td>
+                        {% if loan.car_vendor != "" %}
+                        <a href="/polls/showUpdate/{{ loan.account_id.pk }}/"><span class="table-remove glyphicon glyphicon-remove"></span></a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td contenteditable="false">Car Brand</td>
+                    <td contenteditable="true">{{ loan.car_brand }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td contenteditable="false">Nominee ID</td>
+                    <td contenteditable="true">{{ loan.nominee_id.pk }}</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td contenteditable="false">Apply Date</td>
+                    <td contenteditable="true">{{ loan.apply_date }}</td>
+                    <td>
+                        
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+
+
+                <!-- This is our clonable table line -->
+                <tr class="hide">
+                    <td contenteditable="true">IO</td>
+                    <td contenteditable="true">IO</td>
+                    <td>
+                        <span class="table-remove glyphicon glyphicon-remove"></span>
+                    </td>
+                    <td>
+                        <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                        <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <button id="export-btn" class="btn btn-primary">Update Data</button>
+        <p id="export"></p>
+        <a href="/polls/getReviewerHomePage/{{ loan.account_id.pk }}/">Remove Form</a>
+    </form>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+    <script src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js'></script>
+
+
+
+    <script>
+        var $TABLE = $('#table');
+        var $BTN = $('#export-btn');
+        var $EXPORT = $('#export');
+
+        $('.table-add').click(function () {
+            var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+            $TABLE.find('table').append($clone);
+        });
+
+        $('.table-remove').click(function () {
+            $(this).parents('tr').detach();
+        });
+
+        $('.table-up').click(function () {
+            var $row = $(this).parents('tr');
+            if ($row.index() === 1) return; // Don't go above the header
+            $row.prev().before($row.get(0));
+        });
+
+        $('.table-down').click(function () {
+            var $row = $(this).parents('tr');
+            $row.next().after($row.get(0));
+        });
+
+        // A few jQuery helpers for exporting only
+        jQuery.fn.pop = [].pop;
+        jQuery.fn.shift = [].shift;
+
+        /*$BTN.click(function () {
+            var $rows = $TABLE.find('tr:not(:hidden)');
+            var headers = [];
+            var data = [];
+
+            // Get the headers (add special header logic here)
+            $($rows.shift()).find('th:not(:empty)').each(function () {
+                headers.push($(this).text().toLowerCase());
+            });
+
+            // Turn all existing rows into a loopable array
+            $rows.each(function () {
+                var $td = $(this).find('td');
+                var h = {};
+
+                // Use the headers from earlier to name our hash keys
+                headers.forEach(function (header, i) {
+                    h[header] = $td.eq(i).text();
+                });
+
+                data.push(h);
+            });
+
+            // Output the result
+            $EXPORT.text(JSON.stringify(data));
+        });*/
+    </script>
+
+
+
+
+</body>
+
+</html>

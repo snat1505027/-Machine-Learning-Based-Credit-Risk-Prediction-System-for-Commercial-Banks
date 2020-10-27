@@ -1,0 +1,519 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+button{
+	background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  #table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#table2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+}
+
+.lcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.lcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.lcontainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.lcontainer input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.lcontainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.lcontainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+
+</style>
+
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    function getSelected(){
+            var favorite = [];
+            $.each($("input[name='info']:checked"), function(){            
+                favorite.push($(this).val());
+            });
+            alert("You have selceted: " + favorite.join(", "));
+    }
+</script>
+
+</head>
+
+<body>   
+	<h2 align="center"> Car Loan Application Form:</h2> 
+	<form action="{% url 'application_form2_nego' loan.pk %}" method="post" onsubmit="return getSelected()">
+	
+    <form id="form1" runat="server">  
+     
+    {% csrf_token %} 
+     
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<tr>
+                <td align="left" class="style1">Allowable amount:</td>
+                <td class="style1"><input type="text" name="amount"></td>  
+                       
+    		
+  			
+		</tr>
+       <tr>
+       		  <td align="left" class="style1">Requested amount:</td>
+              <td class="style1"><input type="text" name="amount" value={{ loan.requested_loan_amount }}></td>  
+       		  <td align="left" class="style1">Term</td>
+              <td class="style1" contenteditable="true"><input name="term" type="text" value={{ loan.term }}></td>  
+       		  
+       </tr> 
+    </table>
+    <table id="table2"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">personal Information</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       		
+       </tr>  
+       <tr>  
+       		  <td align="left"><label class="lcontainer">First Name:<input type="checkbox" value="first_name" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cfname" value={{ loan.first_name }}></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Middle Name:<input type="checkbox" value="middle_name" name="info"><span class="checkmark"></span></label></td>   
+              <td><input type="text" name="cmname" value={{ loan.middle_name }}></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Last Name:<input type="checkbox" value="last_name" name="info"><span class="checkmark"></span></label></td>   
+              <td><input type="text" name="clame" value={{ loan.last_name }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Date of Birth:<input type="checkbox" value="date_of_birth" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cdob" value={{ loan.date_of_birth }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Sex<input type="checkbox" value="sex" name="info"><span class="checkmark"></span></label></td> 
+              <td>
+            	  <input type="text" name="sex1" value={{ loan.sex }}>
+		      </td>  
+		      
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Father Name:<input type="checkbox" value="father" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cfathersname" value={{ loan.father }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Mother Name:<input type="checkbox" value="mother" name="info"><span class="checkmark"></span></label></td>   
+              <td><input type="text" name="cmothersname" value={{ loan.mother }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">National ID:<input type="checkbox" value="nid" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cnid" value={{ loan.nid }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Passport:<input type="checkbox" value="passport" name="info"><span class="checkmark"></span></label></td>   
+              <td><input type="text" name="cpassport" value={{ loan.passport }}></td> 
+       </tr> 
+         
+</table>
+
+<table id="table3"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">Employment Details</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>
+       <tr>  
+              <td  align="left" class="style1"><label class="lcontainer">Profession<input type="checkbox" value="profession" name="info"><span class="checkmark"></span></label></td> 
+              <td>
+              		<input type="text" name="employ" value={{ loan.profession }}> 
+              </td>
+             
+       </tr>    
+</table>
+
+<table id="table4"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">1. For Salaried Person</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Name of the organization<input type="checkbox" value="Name of the organization" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cnameoforg" value={{ loan.organization_name }}></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Office Address<input type="checkbox" value="Office Address" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cofficeaddress" value={{ loan.office_address }}></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Designation<input type="checkbox" value="Designation" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cdesignation" value={{ loan.designation }}></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Department<input type="checkbox" value="Department" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cdepartment" value={{ loan.department }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Division<input type="checkbox" value="Division" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cdivision" value={{ loan.division }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Join Date<input type="checkbox" value="Join Date" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cjoindate" value={{ loan.join_date }}></td>  
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">Service years<input type="checkbox" value="Service years" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cserviceyears" value={{ loan.service_years }}></td> 
+       </tr>    
+       <tr>  
+              <td align="left"><label class="lcontainer">Employment status<input type="checkbox" value="Employment status" name="info"><span class="checkmark"></span></label></td>   
+              <td>
+            	  <input type="text" name="employmentstatus" value={{ loan.employment_status }}>
+		      </td>  
+		      
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Salary Date<input type="checkbox" value="Salary Date" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="csalarydate" value={{ loan.salary_date }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Salary payment mode<input type="checkbox" value="Salary payment mode" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+            	  <input type="text" name="salarypaymentmethod" value={{ loan.salary_payment_mode }}>
+		      </td>  
+       </tr>  
+       
+         
+</table>
+
+<table id="table5"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">2. Businessman/Self Employed </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Name of the organization<input type="checkbox" value="Name of the organization" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cbussnameoforg" /></td> 
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Office Address<input type="checkbox" value="Office Address" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cbussofficeaddress" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Designation<input type="checkbox" value="Designation" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cbusscompanyname" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Ownership status<input type="checkbox" value="Ownership status" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+            	  <input type="text" name="ownershipstatus" value={{ loan.ownership_status }}>
+		      </td>  
+		      
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Share holding position<input type="checkbox" value="Share holding position" name="info"><span class="checkmark"></span></label></td>   
+              <td><input type="text" name="cshareholdingposition" value={{ loan.share_holding_position }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Business starting date<input type="checkbox" value="Business starting date" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cbussstartdate" value={{ loan.business_starting_date }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Number of years in same business<input type="checkbox" value="Number of years in same business" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cyearsinbuss" value={{ loan.number_of_employee }}></td>  
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">Number of employee<input type="checkbox" value="Number of employee" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cnoemp"  value={{ loan. }}></td>  
+       </tr>    
+        
+       <tr>  
+              <td align="left"><label class="lcontainer">Industry type<input type="checkbox" value="Industry type" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cindustrytype"  value={{ loan.industry_type }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Main product<input type="checkbox" value="Main product" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cmainprod"  value={{ loan.main_product }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Main Banker<input type="checkbox" value="Main Banker" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cmainbanker"  value={{ loan.main_banker }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Phone No<input type="checkbox" value="Phone No" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cphone"  value={{ loan.phone_no }}></td>  
+       </tr> 
+         
+</table>
+<table id="table6"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly income </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Gross salary<input type="checkbox" value="Gross salary" name="info"><span class="checkmark"></span></label></td>
+              <td><input type="text" name="cgrosssal"  value={{ loan.gross_salary }}></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Net salary<input type="checkbox" value="Net salary" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cnetsal"  value={{ loan.net_salary }}></td>   
+       </tr>  
+       <tr>  
+               <td align="left"><label class="lcontainer">Business Income<input type="checkbox" value="Business Income" name="info"><span class="checkmark"></span></label></td>
+              <td><input type="text" name="cbussincome"  value={{ loan.business_income }}></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Remmitance<input type="checkbox" value="Remmitance" name="info"><span class="checkmark"></span></label></td>    
+              <td><input type="text" name="cremmitance"  value={{ loan.remmitance }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Existing Rental Income<input type="checkbox" value="Existing Rental Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="crentalincome"  value={{ loan.existing_rental_income }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">1. Addess<input type="checkbox" value="Address 1" name="info"><span class="checkmark"></span></label></td>
+              <td><input type="text" name="c1addr"  value={{ loan.address1 }}></td>  
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">2. Address<input type="checkbox" value="Address 2" name="info"><span class="checkmark"></span></label></td>
+              <td><input type="text" name="c2addr"  value={{ loan.address2 }}></td>  
+       </tr>    
+        
+       <tr>  
+               <td align="left"><label class="lcontainer">3. Address<input type="checkbox" value="Address 3" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="c3addr"  value={{ loan.address3 }}></td>  
+       </tr> 
+       <tr>  
+              <<td align="left"><label class="lcontainer">Expected rental Income<input type="checkbox" value="Expected rental Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cexpectesrentalincome" value={{ loan.expected_rental_income }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Interest Income<input type="checkbox" value="Interest Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cinterestincome" value={{ loan.interest_income }}></td>  
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Other Income<input type="checkbox" value="Other Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cotherincome"  value={{ loan.other_income }}></td>  
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">1.<input type="checkbox" value="other income 1" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cotherincome1"  value={{ loan.other_income_1 }}></td>  
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">2.<input type="checkbox" value="other income 2" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cotherincome2"  value={{ loan.other_income_2 }}></td>  
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">Total<input type="checkbox" value="Total" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cotherincome3" value={{ loan.total_income }}></td>  
+       </tr>
+         
+</table>
+
+<table id="table7"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly expenditure</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+               <td align="left"><label class="lcontainer">House rent<input type="checkbox" value="House rent" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="chouserent"  value={{ loan.house_rent }}></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Utilites and other living expenses<input type="checkbox" value="Utilites and other living expenses" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="clivingexpences"  value={{ loan.utilities_bill }}></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Bank's Loan EMI<input type="checkbox" value="loan_EMI" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cbanksloanemi"  value={{ loan.bank_loan_emi }}></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Other bank's Loan EMI<input type="checkbox" value="other_loan_EMI" name="info"><span class="checkmark"></span></label></td>
+              <td><input type="text" name="cotherbanksloanemi"  value={{ loan.other_banks_loan_emi }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Credit card performance(5% of limit)<input type="checkbox" value="credit_card_performance" name="info"><span class="checkmark"></span></label></td>   
+              <td><input type="text" name="ccreditcardperformance"  value={{ loan.credit_card_performance }}></td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Total<input type="checkbox" value="total" name="info"><span class="checkmark"></span></label></td> 
+              <td><input type="text" name="cexptotal" value={{ loan.total_expense }}></td>  
+       </tr>
+        
+</table>
+<div class="row">
+	<div class="column">
+        <input type="submit" value="Next">
+    </div>
+  </div>
+
+   
+    </form>  
+</body>  
+</html>

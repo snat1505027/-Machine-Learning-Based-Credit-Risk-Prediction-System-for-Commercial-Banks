@@ -1,0 +1,900 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 40px;
+    height: 20px;
+    border-radius: 4px;
+    border-width: thin;
+    
+}
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+
+button{
+	background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  #table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#table2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+}
+</style>
+
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
+</head>
+
+<body>   
+	<h2 align="center"> Car Loan Application Form:</h2> 
+	<form action="{% url 'lafp3' %}" method="post">
+	
+    <form id="form1" runat="server">  
+     
+    {% csrf_token %} 
+     
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+      <tr>
+            <td align="left" class="style1">Requested amount: *</td>
+             <td class="style1"><input type="text" name="amount" value="10000"/></td>  
+            <td align="left" class="style1">Purpose: *</td>
+             <td class="style1"><input type="text" name="purpose" value="debt_consolidation"/></td>  
+            
+      </tr> 
+      
+      <tr>  
+            <td align="left" class="style1">Term: *</td>
+             <td class="style1"><input type="text" name="term" value="36"/></td>
+             <td align="left" class="style1">Interest Rate: *</td>
+             <td class="style1"><input type="text" name="interest_rate" value="13.66"/></td> 
+             <td align="left" class="style1">Installment: *</td>
+             <td class="style1"><input type="text" name="installment" value="340.13"/></td>  
+            
+      </tr> 
+   </table>
+    <table id="table2"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">personal Information</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       		
+       </tr>  
+       <tr>  
+        <td align="left">First Name:</td>  
+        <td><input type="text" name="cfname" value="{{ user.username }}"/></td>  
+          
+  </td>  
+ </tr>  
+ <tr>  
+        <td align="left">Middle Name:</td>  
+        <td><input type="text" name="cmname" value="{{ user.username}}"/></td>   
+ </tr>  
+ <tr>  
+        <td align="left">Last Name:</td>  
+        <td><input type="text" name="clame" value="{{ user.username}}" /></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Date of Birth:</td>  
+        <td><input type="date" name="cdob" value="1991-01-01"/></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Sex *</td>  
+        <td>
+          <input type="radio" name="sex1" value="Male" checked />Male 
+      <input type="radio" name="sex1" value="Female"  /> Female  
+    </td>  
+    
+ </tr>  
+ <tr>  
+        <td align="left">Father's name:</td>  
+        <td><input type="text" name="cfathersname" value="Father's name"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Mother's name:</td>  
+        <td><input type="text" name="cmothersname" value="Mother's name"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">National ID:</td>  
+        <td><input type="text" name="cnid" value="11111111"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Passport:</td>  
+        <td><input type="text" name="cpassport" value="11111111"/></td> 
+ </tr>
+ <tr>  
+  <td align="left">Grade:</td>  
+  <td><input type="text" name="grade" value="C"/></td> 
+</tr>
+       <tr>  
+              <td align="left">Number of current accounts(30 days past due):</td>  
+              <td><input type="number" name="num_tl_30dpd" value="0.0" min="0" max="20" step="10"/></td>  
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of accounts (90 or more days past due):</td>  
+              <td><input type="number" name="num_tl_90g_dpd_24m" value="0.0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Number of accounts opened in past 12 months:</td>  
+              <td><input type="number" name="num_tl_op_past_12m" value="2.0" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Percent of trades never delinquent:</td>  
+              <td><input type="number" name="pct_tl_nvr_dlq" value="100.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Percentage of all bankcard accounts:</td>  
+              <td><input type="text" name="percent_bc_gt_75" value="NaN" placeholder="> 75% of limit"/></td>
+		      
+       </tr>  
+       <tr>  
+              <td align="left">Number of public record bankruptcies:</td>  
+              <td><input type="number" name="pub_rec_bankruptcies" value="0.0"/></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Number of tax liens:</td>  
+              <td><input type="number" name="tax_liens" value="0.0"/></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Total high credit/credit limit:</td>  
+              <td><input type="number" name="tot_hi_cred_lim" value="245105.0"/></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Total credit balance excluding mortgage:</td>  
+              <td><input type="number" name="total_bal_ex_mort" value="48947.0"/></td> 
+       </tr> 
+         
+</table>
+
+<table id="table3"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">Employment Details</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>
+       <tr>  
+              <td  align="left" class="style1">Profession</td>  
+              <td>
+              		<input type="checkbox" name="employ" value="Salaried" checked/>Salaried 
+		    	  	<input type="checkbox" name="employ" value="Professional" />Professional
+		    	  	<input type="checkbox" name="employ" value="Business" />Business<br>
+		    	  	<input type="checkbox" name="employ" value="Landlord" /> Landlord
+		    	  	<input type="checkbox" name="employ" value="Housewife" />Housewife
+		    	  	<input type="checkbox" name="employ" value="Other" /> Other
+              </td>
+             
+       </tr>    
+</table>
+
+<table id="table4"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">1. For Salaried Person</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+           <td>Applicant</td>
+           
+           <tr>  
+            <td align="left">Name of the organization</td>  
+            <td><input type="text" name="cnameoforg" value="Org"/></td>  
+              
+      </td>  
+     </tr>  
+     <tr>  
+            <td align="left">Office Address</td>  
+            <td><input type="text" name="cofficeaddress" value="Address"/></td>   
+     </tr>  
+     <tr>  
+            <td align="left">Designation</td>  
+            <td><input type="text" name="cdesignation" value="Designation"/></td>   
+     </tr>  
+     <tr>  
+            <td align="left">Department</td>  
+            <td><input type="text" name="cdepartment" value="Department"/></td>  
+     </tr>  
+     <tr>  
+            <td align="left">Division</td>  
+            <td><input type="text" name="cdivision" value="Division"/></td>  
+     </tr>  
+     <tr>  
+            <td align="left">Join Date</td>  
+            <td><input type="date" name="cjoindate" value="1991-01-01"/></td>  
+     </tr>
+     <tr>  
+            <td align="left">Service years</td>  
+            <td><input type="text" name="cserviceyears" value="0"/></td> 
+     </tr>    
+     <tr>  
+            <td align="left">Salary Date</td>  
+            <td><input type="date" name="csalarydate" value="1991-01-01"/></td>  
+     </tr> 
+     <tr>  
+            <td align="left">Salary payment mode</td>  
+            <td>
+              <input type="radio" name="salarypaymentmethod" value="Cash" checked/>Cash 
+          <input type="radio" name="salarypaymentmethod" value="Bank" />Bank
+          <input type="radio" name="salarypaymentmethod" value="Bank and cash" />Bank and cash
+          <input type="radio" name="salarypaymentmethod" value="Cheque" />Cheque
+        </td>  
+     </tr>  
+     
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Total bankcard high credit/credit limit:</td>  
+              <td><input type="number" name="total_bc_limit" value="0.0"/></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Total installment high credit/credit limit:</td>  
+              <td><input type="number" name="total_il_high_credit_limit" value="46320.0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Sum of revolving credit balance of the co-borrowers:</td>  
+              <td><input type="text" name="revol_bal_joint" value="NaN"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Earliest credit line at time of application for the secondary applicant:</td>  
+              <td><input type="date" name="sec_app_earliest_cr_line" value="1991-01-01"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Credit inquiries in the last 6 months (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_inq_last_6mths" value=""/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of mortgage accounts (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_mort_acc" value=""/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Number of open trades (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_open_acc" value=""/></td> 
+       </tr>    
+       <tr>  
+              <td align="left">Employment status *</td>  
+              <td>
+            	  <input type="radio" name="employmentstatus" value="unskilledandnonresident" checked/>Unskilled and non resident 
+		    	  <input type="radio" name="employmentstatus" value="unskilledandresident" />Unskilled and resident
+		    	  <input type="radio" name="employmentstatus" value="skilled" />Skilled
+		    	  <input type="radio" name="employmentstatus" value="highlyskiled" />Highly skilled
+		      </td>  
+		      
+       </tr>  
+       <tr>  
+              <td align="left">Ratio of total current balance to high credit/credit limit:</td>  
+              <td><input type="number" name="sec_app_revol_util" value="" placeholder="for all revolving accounts"/></td>  
+       </tr> 
+       
+         
+</table>
+
+<table id="table5"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">2. Businessman/Self Employed </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+        <td align="left">Name of the organization</td>  
+        <td><input type="text" name="cbussnameoforg" value="org"/></td> 
+          
+  </td>  
+ </tr>  
+ <tr>  
+        <td align="left">Office Address</td>  
+        <td><input type="text" name="cbussofficeaddress" value="address" /></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Designation</td>  
+        <td><input type="text" name="cbusscompanyname" value="designation"/></td>  
+ </tr>   
+    
+ </tr> 
+ <tr>  
+        <td align="left">Share holding position</td>  
+        <td><input type="text" name="cshareholdingposition" value="0"/></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Business starting date</td>  
+        <td><input type="date" name="cbussstartdate" value="1991-01-01"/></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Number of years in same business</td>  
+        <td><input type="text" name="cyearsinbuss" value="0"/></td>  
+ </tr>
+ <tr>  
+        <td align="left">Number of employee</td>  
+        <td><input type="text" name="cnoemp" value="0"/></td>  
+ </tr>    
+  
+ <tr>  
+        <td align="left">Industry type</td>  
+        <td><input type="text" name="cindustrytype" value="industry"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Main product</td>  
+        <td><input type="text" name="cmainprod" value="main product"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Main Banker</td>  
+        <td><input type="text" name="cmainbanker" value="Banker"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Phone No</td>  
+        <td><input type="text" name="cphone" value="999"/></td>  
+ </tr> 
+ 
+       <tr>  
+              <td align="left">Number of currently active installment trades (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_open_act_il" value=""/></td> 
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of revolving accounts (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_num_rev_accts" value="" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of charge-offs within last 12 months (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_chargeoff_within_12_mths" value=""/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Ownership status</td>  
+              <td>
+            	  <input type="radio" name="ownershipstatus" value="Propriertor" checked/>Propriertor
+		    	  <input type="radio" name="ownershipstatus" value="Partnership" />Partnership
+		    	  <input type="radio" name="ownershipstatus" value="Limited company" />Limited company
+		      </td>  
+		      
+       </tr> 
+       <tr>  
+              <td align="left">Number of collections excluding medical collections (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_collections_12_mths_ex_med" value="" placeholder="within last 12 months"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Months since most recent 90-day (secondary applicant):</td>  
+              <td><input type="number" name="sec_app_mths_since_last_major_derog" value=""/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Borrower is on a hardship plan:</td>  
+              <td>
+            	  <input type="radio" name="hardship_flag" value="Y"/>Yes
+		    	  <input type="radio" name="hardship_flag" value="N" checked/>No
+		      </td>  
+       </tr>
+       <tr>  
+              <td align="left">The hardship plan offering:</td>  
+              <td><input type="text" name="hardship_type" value=""/></td>  
+       </tr>    
+        
+       <tr>  
+              <td align="left">Reason the hardship plan was offered:</td>  
+              <td>
+            	  <input type="radio" name="hardship_reason" value="NATURAL_DISASTER" checked/>Natural Disaster
+		    	  <input type="radio" name="hardship_reason" value="EXCESSIVE_OBLIGATIONS" />Excessive Obligations
+		    	  <input type="radio" name="hardship_reason" value="UNEMPLOYMENT" />Unemployment
+				  <input type="radio" name="hardship_reason" value="OTHER" />Other
+		      </td>			  
+       </tr> 
+       <tr>  
+              <td align="left">Hardship Status:</td>  
+			 <td>
+            	  <input type="radio" name="hardship_status" value="Completed" checked/>Completed
+		    	  <input type="radio" name="hardship_status" value="Broken" />Broken
+		    	  <input type="radio" name="hardship_status" value="Canceled" />Canceled
+				  <input type="radio" name="hardship_status" value="Active" />Active
+				  <input type="radio" name="hardship_status" value="Pending" />Pending
+		      </td>
+       </tr> 
+       <tr>  
+              <td align="left">Amount of months that to pay less due to a hardship plan:</td>  
+              <td><input type="number" name="deferral_term" value="Banker"/></td>  
+       </tr> 
+       <tr>  
+              <td align="left">The interest payment while on a hardship plan:</td>  
+              <td><input type="number" name="hardship_amount" value="999"/></td>  
+       </tr> 
+         
+</table>
+<table id="table6"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly income </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+        <td align="left">Gross salary *</td>  
+        <td><input type="text" name="cgrosssal" value="0"/></td>  
+          
+  </td>  
+ </tr>  
+ <tr>  
+        <td align="left">Net salary *</td>  
+        <td><input type="text" name="cnetsal" value="0"/></td>   
+ </tr>  
+ <tr>  
+        <td align="left">Business Income</td>  
+        <td><input type="text" name="cbussincome" value="0"/></td>   
+ </tr>  
+ <tr>  
+        <td align="left">Remmitance</td>  
+        <td><input type="text" name="cremmitance" value="0"/></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Existing Rental Income</td>  
+        <td><input type="text" name="crentalincome" value="0"/></td>  
+ </tr>  
+ <tr>  
+        <td align="left">1. Addess</td>  
+        <td><input type="text" name="c1addr" value="AZ" /></td>  
+ </tr>
+ <tr>  
+        <td align="left">2. Address</td>  
+        <td><input type="text" name="c2addr" value="add2"/></td>  
+ </tr>    
+  
+ <tr>  
+        <td align="left">3. Address</td>  
+        <td><input type="text" name="c3addr" value="add3"/></td>  
+ </tr> 
+ <tr>
+        <td align="left">Housing *</td>
+        <td>
+              <input type="radio" name="housing" value="MORTGAGE" checked>Mortgage
+               <input type="radio" name="housing" value="OWN">Own
+               <input type="radio" name="housing" value="RENT">Rent
+               <input type="radio" name="housing" value="ANY">Other
+               
+        </td>
+ </tr>
+ <tr>  
+        <td align="left">Main product</td>  
+        <td><input type="text" name="cincomemainprod" value="Main product"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Expected rental Income</td>  
+        <td><input type="text" name="cexpectesrentalincome" value="0"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Interest Income</td>  
+        <td><input type="text" name="cinterestincome" value="0"/></td>  
+ </tr> 
+ <tr>  
+        <td align="left">Other Income</td>  
+        <td><input type="text" name="cotherincome" value="0"/></td>  
+ </tr>
+ <tr>  
+        <td align="left">1.</td>  
+        <td><input type="text" name="cotherincome1" value="0"/></td>  
+ </tr>
+ <tr>  
+        <td align="left">2.</td>  
+        <td><input type="text" name="cotherincome2" value="0"/></td>  
+ </tr>
+ <tr>  
+        <td align="left">Total *</td>  
+        <td><input type="text" name="cotherincome3" value="65000"/></td>  
+ </tr>
+       <tr>  
+              <td align="left">Start date of the hardship plan period:</td>  
+              <td><input type="date" name="hardship_start_date" value="1991-01-01"/></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">End date of the hardship plan period:</td>  
+              <td><input type="date" name="hardship_end_date" value="1991-01-01"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">The day the first hardship plan payment is due:</td>  
+              <td><input type="date" name="payment_plan_start_date" value="0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">The number of months for smaller payments due to a hardship plan:</td>  
+              <td><input type="number" name="hardship_length" value="0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Account days past due as of the hardship plan start date:</td>  
+              <td><input type="number" name="hardship_dpd" value="0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Loan Status as of the hardship plan start date:</td>  
+              <td>
+            	  <input type="radio" name="hardship_loan_status" value="Late (16-30 days)" checked/>Late (16-30 days)
+		    	  <input type="radio" name="hardship_loan_status" value="In Grace Period" />In Grace Period
+		    	  <input type="radio" name="hardship_loan_status" value="Current" />Current
+				  <input type="radio" name="hardship_loan_status" value="Other" />Other
+		      </td>
+       </tr>
+       <tr>  
+              <td align="left">Original projected interest amount (null for broken hardship payment plan):</td>  
+              <td><input type="number" name="orig_projected_additional_accrued_interest" value=""/></td>  
+       </tr>    
+        
+       <tr>  
+              <td align="left">The payoff balance amount as of the hardship plan start date:</td>  
+              <td><input type="number" name="hardship_payoff_balance_amount" value=""/></td>  
+       </tr>
+       <tr>  
+              <td align="left">The last payment amount as of the hardship plan start date:</td>  
+              <td><input type="number" name="hardship_last_payment_amount" value=""/></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Loan receiving method:</td>  
+              <td>
+                     <input type="radio" name="disbursement_method" value="CASH" checked>Cash
+                     <input type="radio" name="disbursement_method" value="DIRECT_PAY">Direct Pay
+              </td>
+       </tr> 
+       <tr>  
+              <td align="left">Working with a debt-settlement company? :</td>  
+			  <td>
+                     <input type="radio" name="debt_settlement_flag" value="Y" checked>Yes
+                     <input type="radio" name="debt_settlement_flag" value="N">No
+              </td>
+       </tr> 
+       <tr>  
+              <td align="left">Debt_Settlement_Flag has been set:</td>  
+              <td><input type="date" name="debt_settlement_flag_date" value="2019-01-01"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">The status of settlement plan:</td>  
+              <td>
+            	  <input type="radio" name="settlement_status" value="COMPLETE" checked/>Complete
+		    	  <input type="radio" name="settlement_status" value="BROKEN" />Broken
+		    	  <input type="radio" name="settlement_status" value="CANCELED" />Canceled
+				  <input type="radio" name="settlement_status" value="ACTIVE" />Active
+				  <input type="radio" name="settlement_status" value="DRAFT" />Draft
+				  <input type="radio" name="settlement_status" value="DENIED" />Denied
+		      </td>			  
+       </tr>
+       <tr>  
+              <td align="left">Agree date to the settlement plan:</td>  
+              <td><input type="date" name="settlement_date" value="2018-12-01"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">The loan amount agreed to settle for:</td>  
+              <td><input type="number" name="settlement_amount" value="1604.33"/></td>  
+       </tr>
+         
+</table>
+
+<table id="table7"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly expenditure</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+
+       <tr>  
+        <td align="left">House rent</td>  
+        <td><input type="text" name="chouserent" value="0"/></td>  
+          
+  </td>  
+ </tr>  
+ <tr>  
+        <td align="left">Utilites and ither living expenses</td>  
+        <td><input type="text" name="clivingexpences" value="0"/></td>   
+ </tr>  
+ <tr>  
+        <td align="left">Bank's Loan EMI</td>  
+        <td><input type="text" name="cbanksloanemi" value="0"/></td>   
+ </tr>  
+ <tr>  
+        <td align="left">Other bank's Loan EMI</td>  
+        <td><input type="text" name="cotherbanksloanemi" value="0" /></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Credit card performance(5% of limit)</td>  
+        <td><input type="text" name="ccreditcardperformance" value="0"/></td>  
+ </tr>  
+ <tr>  
+        <td align="left">Total *</td>  
+        <td><input type="text" name="cexptotal" value="0"/></td>  
+ </tr>
+       <tr>  
+              <td align="left">The settlement amount as a percentage of the payoff balance amount:</td>  
+              <td><input type="number" name="settlement_percentage" value="40.0"/></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">The number of months on the settlement plan:</td>  
+              <td><input type="number" name="settlement_term" value="1.0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Bank's Loan EMI</td>  
+              <td><input type="text" name="cbanksloanemi" value="0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Other bank's Loan EMI</td>  
+              <td><input type="text" name="cotherbanksloanemi" value="0" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Credit card performance(5% of limit)</td>  
+              <td><input type="text" name="ccreditcardperformance" value="0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Total *</td>  
+              <td><input type="text" name="cexptotal" value="0"/></td>  
+       </tr>
+        
+</table>
+
+<table id="table8"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">More Details</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+        <td align="left">Number of revolving trades with balance >0</td>  
+        <td><input type="text" name="num_rev_tl_bal_gt_0" value="2.0"/></td>  
+          
+  </td>  
+ </tr>  
+ <tr>  
+        <td align="left">Number of satisfactory accounts</td>  
+        <td><input type="text" name="num_sats" value="5.0"/></td>   
+ </tr>  
+ <tr>  
+        <td align="left">Number of accounts currently 120 days past due (updated in past 2 months)</td>  
+        <td><input type="text" name="num_tl_120dpd_2m" value="0.0"/></td>   
+ </tr>  
+ <tr>  
+              <td align="left">Number of 30+ days past-due incidences of delinquency in past 2 years</td>  
+              <td><input type="text" name="delinq_2yrs" value="0.0"/></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of inqueries in last 6 months</td>  
+              <td><input type="text" name="inq_last_6mths" value="1.0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Months since last deliquency</td>  
+              <td><input type="text" name="mths_since_last_delinq" value="0.0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Months since last public record</td>  
+              <td><input type="text" name="mths_since_last_record" value="0.0" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of open credit lines </td>  
+              <td><input type="text" name="open_acc" value="5.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of derogatory public records</td>  
+              <td><input type="text" name="pub_rec" value="0.0"/></td>  
+       </tr>
+        <tr>  
+              <td align="left">Total credit revolving balance</td>  
+              <td><input type="text" name="revol_bal" value="4500"/></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Revolving line utilization rate, or the amount of credit the borrower is using relative to all available revolving credit.</td>  
+              <td><input type="text" name="revol_util" value="95.7"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">The total number of credit lines currently in the borrower's credit file</td>  
+              <td><input type="text" name="total_acc" value="8.0"/></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Number of currently active installment trades</td>  
+              <td><input type="text" name="open_act_il" value="NaN" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of trades opened in past 24 months </td>  
+              <td><input type="text" name="acc_open_past_24mths" value="4.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Total open to buy on revolving bankcards</td>  
+              <td><input type="text" name="bc_open_to_buy" value="NaN"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Ratio of current balance to high credit/credit limit for all bankcard accounts.</td>  
+              <td><input type="text" name="bc_util" value="NaN"/></td>  
+       </tr>
+       
+       <tr>  
+              <td align="left">Number of charge-offs within 12 months </td>  
+              <td><input type="text" name="chargeoff_within_12_mths" value="0.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">The past-due amount owed for the accounts(for deliquent)</td>  
+              <td><input type="text" name="delinq_amnt" value="0.0"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Months since oldest revolving account opened</td>  
+              <td><input type="text" name="mo_sin_old_il_acct" value="94.0"/></td>  
+       </tr>
+       
+       <tr>  
+              <td align="left">Months since most recent revolving account opened</td>  
+              <td><input type="text" name="mo_sin_rcnt_rev_tl_op" value="27.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Months since oldest revolving account opened</td>  
+              <td><input type="text" name="mo_sin_old_rev_tl_op" value="24.0"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Months since most recent account opened</td>  
+              <td><input type="text" name="mo_sin_rcnt_tl" value="4.0"/></td>  
+       </tr>
+       
+       <tr>  
+              <td align="left">Number of mortgage accounts.</td>  
+              <td><input type="text" name="mort_acc" value="1.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Months since most recent bankcard account opened.</td>  
+              <td><input type="text" name="mths_since_recent_bc" value="NaN"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Months since most recent personal finance delinquency.</td>  
+              <td><input type="text" name="mths_since_recent_bc_dlq" value="NaN"/></td>  
+       </tr>
+       
+       <tr>  
+              <td align="left">Months since most recent inquiry.</td>  
+              <td><input type="text" name="mths_since_recent_inq" value="1.0"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Months since most recent personal finance delinquency.</td>  
+              <td><input type="text" name="mths_since_recent_revol_delinq" value="NaN"/></td>  
+       </tr>
+       
+       <tr>  
+              <td align="left">Number of accounts ever 120 or more days past due</td>  
+              <td><input type="text" name="num_accts_ever_120_pd" value="0.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of currently active bankcard accounts</td>  
+              <td><input type="text" name="num_actv_bc_tl" value="0.0"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Number of currently active revolving trades</td>  
+              <td><input type="text" name="num_actv_rev_tl" value="2.0"/></td>  
+              </tr>
+       
+        <tr>  
+              <td align="left">Number of satisfactory bankcard accounts</td>  
+              <td><input type="text" name="num_bc_sats" value="0.0"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Number of bankcard accounts</td>  
+              <td><input type="text" name="num_bc_tl" value="0.0"/></td>  
+       </tr>
+       
+       <tr>  
+              <td align="left">Number of installment accounts</td>  
+              <td><input type="text" name="num_il_tl" value="4.0"/></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of open revolving accounts</td>  
+              <td><input type="text" name="num_op_rev_tl" value="2.0"/></td>  
+       </tr>
+       <tr>  
+              <td align="left">Number of revolving accounts</td>  
+              <td><input type="text" name="num_rev_accts" value="2.0"/></td>  
+              </tr>
+</table>
+<div class="row">
+	<div class="column">
+	<button onclick="goBack()">Back</button>
+	</div> 
+	<div class="column">
+    <input type="submit" value="Next">
+    </div>
+  </div>
+
+   
+    </form>  
+</body>  
+</html>

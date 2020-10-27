@@ -1,0 +1,614 @@
+{% load static %}
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+.newbutton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.newbutton:hover {
+  background-color: green;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  #table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#table2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+}
+
+.lcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.lcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.lcontainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.lcontainer input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.lcontainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.lcontainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+
+</style>
+
+<link rel="icon" href="{% static 'favicon.ico' %}">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("button").click(function(){
+            var favorite = [];
+            $.each($("input[name='info']:checked"), function(){            
+                favorite.push($(this).val());
+            });
+            alert("My favourite sports are: " + favorite.join(", "));
+        });
+    });
+</script>
+
+
+</head>
+
+<body>   
+	<h2 align="center"> Car Loan Application Form:</h2> 
+	
+    <form id="form1" runat="server">  
+    <div>                
+    </div>   
+     
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<tr>	
+    		<td align="left" class="style1">Your image:</td>
+    		<td class="style1"><input class="box__file" type="file" name="image" id="imgfile"  /><td>
+  			
+		</tr>
+       <tr>
+       		  <td align="left" class="style1">Requested amount:</td>
+              <td class="style1"><input type="text" name="amount" /></td>  
+       		  <td align="left" class="style1">Term</td>
+              <td class="style1"><input type="text" name="term" /></td>  
+       		  
+       </tr> 
+    </table>
+    <table id="table2"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">personal Information</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       
+       <tr>  
+              <td align="left"><label class="lcontainer">First Name:<input type="checkbox" value="first_name" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="cfname" /></td>  
+              <td><input type="text" name="jfname" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Middle Name:<input type="checkbox" value="middle_name" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Last Name:<input type="checkbox" value="last_name" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Date of Birth:<input type="checkbox" value="date_of_birth" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Sex<input type="checkbox" value="sex" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Male 
+		    	  <input type="radio" name="sex1" value="female1" /> Female  
+		      </td>  
+		      
+		      <td>
+            	  <input type="radio" name="sex2" value="male2" />Male 
+		    	  <input type="radio" name="sex2" value="female2" /> Female  
+		      </td>
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Father Name:<input type="checkbox" value="father" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Mother Name:<input type="checkbox" value="mother" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">National ID:<input type="checkbox" value="nid" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Passport:<input type="checkbox" value="passport" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+         
+</table>
+
+<table id="table3"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">Employment Details</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>
+       <tr>  
+              <td  align="left" class="style1"><label class="lcontainer">Profession<input type="checkbox" value="profession" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+              <input type="checkbox" name="employ" value="e11" />Salaried 
+		    	  	<input type="checkbox" name="employ" value="e12" />Professional
+		    	  	<input type="checkbox" name="employ" value="e13" />Business<br>
+		    	  	<input type="checkbox" name="employ" value="e14" /> Landlord
+		    	  	<input type="checkbox" name="employ" value="e15" />Housewife
+		    	  	<input type="checkbox" name="employ" value="e16" /> Other
+              </td>
+              <td>
+              		<input type="checkbox" name="employ" value="e21" />Salaried 
+		    	  	<input type="checkbox" name="employ" value="e22" />Professional
+		    	  	<input type="checkbox" name="employ" value="e23" />Business<br>
+		    	  	<input type="checkbox" name="employ" value="e24" /> Landlord
+		    	  	<input type="checkbox" name="employ" value="e25" />Housewife
+		    	  	<input type="checkbox" name="employ" value="e26" /> Other
+              </td>
+       </tr>    
+</table>
+
+<table id="table4"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">1. For Salaried Person</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Name of the organization<input type="checkbox" value="Name of the organization" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Office Address<input type="checkbox" value="Office Address" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Designation<input type="checkbox" value="Designation" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Department<input type="checkbox" value="Department" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Division<input type="checkbox" value="Division" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Join Date<input type="checkbox" value="Join Date" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">Service years<input type="checkbox" value="Service years" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>    
+       <tr>  
+              <td align="left"><label class="lcontainer">Employment status<input type="checkbox" value="Employment status" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Permanent 
+		    	  <input type="radio" name="sex1" value="female1" />Contractual
+		    	  <input type="radio" name="sex1" value="female1" />Part Time
+		      </td>  
+		      
+		      <td>
+            	  <input type="radio" name="sex1" value="male1" />Permanent 
+		    	  <input type="radio" name="sex1" value="female1" />Contractual
+		    	  <input type="radio" name="sex1" value="female1" />Part Time
+		      </td>
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Salary Date<input type="checkbox" value="Salary Date" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Salary payment mode<input type="checkbox" value="Salary payment mode" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Cash 
+		    	  <input type="radio" name="sex1" value="female1" />Bank
+		    	  <input type="radio" name="sex1" value="female1" />Bank and cash
+		    	  <input type="radio" name="sex1" value="female1" />Cheque
+		      </td>  
+		      <td>
+            	  <input type="radio" name="sex1" value="male1" />Cash 
+		    	  <input type="radio" name="sex1" value="female1" />Bank
+		    	  <input type="radio" name="sex1" value="female1" />Bank and cash
+		    	  <input type="radio" name="sex1" value="female1" />Cheque
+		      </td> 
+       </tr>  
+       
+         
+</table>
+
+<table id="table5"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">2. Businessman/Self Employed </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Name of the organization<input type="checkbox" value="Name of the organization" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Office Address<input type="checkbox" value="Office Address" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Designation<input type="checkbox" value="Designation" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Ownership status<input type="checkbox" value="Ownership status" name="info"><span class="checkmark"></span></label></td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Propriertor
+		    	  <input type="radio" name="sex1" value="female1" />Partnership
+		    	  <input type="radio" name="sex1" value="female1" />Limited company
+		      </td>  
+		      
+		      <td>
+            	  <input type="radio" name="sex1" value="male1" />Propriertor
+		    	  <input type="radio" name="sex1" value="female1" />Partnership
+		    	  <input type="radio" name="sex1" value="female1" />Limited company
+		      </td>
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Share holding position<input type="checkbox" value="Share holding position" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Business starting date<input type="checkbox" value="Business starting date" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Number of years in same business<input type="checkbox" value="Number of years in same business" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">Number of employee<input type="checkbox" value="Number of employee" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>    
+        
+       <tr>  
+              <td align="left"><label class="lcontainer">Industry type<input type="checkbox" value="Industry type" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Main product<input type="checkbox" value="Main product" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Main Banker<input type="checkbox" value="Main Banker" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Phone No<input type="checkbox" value="Phone No" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+         
+</table>
+<table id="table6"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly income </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Gross salary<input type="checkbox" value="Gross salary" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Net salary<input type="checkbox" value="Net salary" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Business Income<input type="checkbox" value="Business Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Remmitance<input type="checkbox" value="Remmitance" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Existing Rental Income<input type="checkbox" value="Existing Rental Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">1. Addess<input type="checkbox" value="Address 1" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">2. Address<input type="checkbox" value="Address 2" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>    
+        
+       <tr>  
+              <td align="left"><label class="lcontainer">3. Address<input type="checkbox" value="Address 3" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Main product<input type="checkbox" value="Main product" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Expected rental Income<input type="checkbox" value="Expected rental Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Interest Income<input type="checkbox" value="Interest Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left"><label class="lcontainer">Other Income<input type="checkbox" value="Other Income" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">1.<input type="checkbox" value="other income 1" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">2.<input type="checkbox" value="other income 2" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left"><label class="lcontainer">Total<input type="checkbox" value="Total" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+         
+</table>
+
+<table id="table7"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly expenditure</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">House rent<input type="checkbox" value="House rent" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Utilites and other living expenses<input type="checkbox" value="Utilites and other living expenses" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Bank's Loan EMI<input type="checkbox" value="loan_EMI" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Other bank's Loan EMI<input type="checkbox" value="other_loan_EMI" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Credit card performance(5% of limit)<input type="checkbox" value="credit_card_performance" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left"><label class="lcontainer">Total<input type="checkbox" value="total" name="info"><span class="checkmark"></span></label></td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+        
+</table>
+
+<div class="row">
+<button type="button" class="newbutton" style="float: right;">Submit</button>
+</div>
+
+   
+    </form>  
+
+</body>  
+
+</html>

@@ -1,0 +1,424 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  #table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#table2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+}
+</style>
+</head>
+
+<body>   
+	<h2 align="center"> Home Loan Application Form:</h2> 
+	<form action="{% url 'lafp3Home' %}" method="post">
+	
+       <form id="form1" runat="server">  
+       {% csrf_token %}
+      
+     
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<tr>	
+    		<td align="left" class="style1">Your image:</td>
+    		<td class="style1"><input class="box__file" type="file" name="image" id="imgfile"  /><td>
+  			
+		</tr>
+       <tr>
+       		  <td align="left" class="style1">Requested amount:</td>
+              <td class="style1"><input type="text" name="amount" /></td>  
+       		  <td align="left" class="style1">Term</td>
+              <td class="style1"><input type="text" name="term" /></td>  
+       		  
+       </tr> 
+    </table>
+    <table id="table2"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">personal Information</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       		
+       </tr>  
+       <tr>  
+              <td align="left">First Name:</td>  
+              <td><input type="text" name="cfname" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Middle Name:</td>  
+              <td><input type="text" name="cmname" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Last Name:</td>  
+              <td><input type="text" name="clame" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Date of Birth:</td>  
+              <td><input type="text" name="cdob" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Sex</td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Male 
+		    	  <input type="radio" name="sex1" value="female1" /> Female  
+		      </td>  
+		      
+       </tr>  
+       <tr>  
+              <td align="left">Father's name:</td>  
+              <td><input type="text" name="cfathersname" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Mother's name:</td>  
+              <td><input type="text" name="cmothersname" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">National ID:</td>  
+              <td><input type="text" name="cnid" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Passport:</td>  
+              <td><input type="text" name="cpassport" /></td> 
+       </tr> 
+         
+</table>
+
+<table id="table3"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">Employment Details</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>
+       <tr>  
+              <td  align="left" class="style1">Profession</td>  
+              <td>
+              		<input type="checkbox" name="employ" value="e11" />Salaried 
+		    	  	<input type="checkbox" name="employ" value="e12" />Professional
+		    	  	<input type="checkbox" name="employ" value="e13" />Business<br>
+		    	  	<input type="checkbox" name="employ" value="e14" /> Landlord
+		    	  	<input type="checkbox" name="employ" value="e15" />Housewife
+		    	  	<input type="checkbox" name="employ" value="e16" /> Other
+              </td>
+             
+       </tr>    
+</table>
+
+<table id="table4"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">1. For Salaried Person</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Name of the organization</td>  
+              <td><input type="text" name="cnameoforg" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Office Address</td>  
+              <td><input type="text" name="cofficeaddress" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Designation</td>  
+              <td><input type="text" name="cdesignation" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Department</td>  
+              <td><input type="text" name="cdepartment" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Division</td>  
+              <td><input type="text" name="cdivision" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Join Date</td>  
+              <td><input type="text" name="cjoindate" /></td>  
+       </tr>
+       <tr>  
+              <td align="left">Service years</td>  
+              <td><input type="text" name="cserviceyears" /></td> 
+       </tr>    
+       <tr>  
+              <td align="left">Employment status</td>  
+              <td>
+            	  <input type="radio" name="employmentstatus" value="permanent" />Permanent 
+		    	  <input type="radio" name="employmentstatus" value="contractual" />Contractual
+		    	  <input type="radio" name="employmentstatus" value="parttime" />Part Time
+		      </td>  
+		      
+       </tr>  
+       <tr>  
+              <td align="left">Salary Date</td>  
+              <td><input type="text" name="csalarydate" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Salary payment mode</td>  
+              <td>
+            	  <input type="radio" name="salarypaymentmethod" value="casah" />Cash 
+		    	  <input type="radio" name="salarypaymentmethod" value="bank" />Bank
+		    	  <input type="radio" name="salarypaymentmethod" value="bankandcash" />Bank and cash
+		    	  <input type="radio" name="salarypaymentmethod" value="cheque" />Cheque
+		      </td>  
+       </tr>  
+       
+         
+</table>
+
+<table id="table5"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">2. Businessman/Self Employed </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Name of the organization</td>  
+              <td><input type="text" name="cbussnameoforg" /></td> 
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Office Address</td>  
+              <td><input type="text" name="cbussofficeaddress" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Designation</td>  
+              <td><input type="text" name="cbusscompanyname" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Ownership status</td>  
+              <td>
+            	  <input type="radio" name="ownershipstatus" value="propriertor" />Propriertor
+		    	  <input type="radio" name="ownershipstatus" value="partnership" />Partnership
+		    	  <input type="radio" name="ownershipstatus" value="limitedcompany" />Limited company
+		      </td>  
+		      
+       </tr> 
+       <tr>  
+              <td align="left">Share holding position</td>  
+              <td><input type="text" name="cshareholdingposition" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Business starting date</td>  
+              <td><input type="text" name="cbussstartdate" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Number of years in same business</td>  
+              <td><input type="text" name="cyearsinbuss" /></td>  
+       </tr>
+       <tr>  
+              <td align="left">Number of employee</td>  
+              <td><input type="text" name="cnoemp" /></td>  
+       </tr>    
+        
+       <tr>  
+              <td align="left">Industry type</td>  
+              <td><input type="text" name="cindustrytype" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Main product</td>  
+              <td><input type="text" name="cmainprod" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Main Banker</td>  
+              <td><input type="text" name="cmainbanker" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Phone No</td>  
+              <td><input type="text" name="cphone" /></td>  
+       </tr> 
+         
+</table>
+<table id="table6"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="2" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly income </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Gross salary</td>  
+              <td><input type="text" name="cgrosssal" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Net salary</td>  
+              <td><input type="text" name="cnetsal" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Business Income</td>  
+              <td><input type="text" name="cbussincome" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Remmitance</td>  
+              <td><input type="text" name="cremmitance" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Existing Rental Income</td>  
+              <td><input type="text" name="crentalincome" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">1. Addess</td>  
+              <td><input type="text" name="c1addr" /></td>  
+       </tr>
+       <tr>  
+              <td align="left">2. Address</td>  
+              <td><input type="text" name="c2addr" /></td>  
+       </tr>    
+        
+       <tr>  
+              <td align="left">3. Address</td>  
+              <td><input type="text" name="c3addr" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Main product</td>  
+              <td><input type="text" name="cincomemainprod" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Expected rental Income</td>  
+              <td><input type="text" name="cexpectesrentalincome" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Interest Income</td>  
+              <td><input type="text" name="cinterestincome" /></td>  
+       </tr> 
+       <tr>  
+              <td align="left">Other Income</td>  
+              <td><input type="text" name="cotherincome" /></td>  
+       </tr>
+       <tr>  
+              <td align="left">1.</td>  
+              <td><input type="text" name="cotherincome1" /></td>  
+       </tr>
+       <tr>  
+              <td align="left">2.</td>  
+              <td><input type="text" name="cotherincome2" /></td>  
+       </tr>
+       <tr>  
+              <td align="left">Total</td>  
+              <td><input type="text" name="cotherincome3" /></td>  
+       </tr>
+         
+</table>
+
+<table id="table7"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly expenditure</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">House rent</td>  
+              <td><input type="text" name="chouserent" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Utilites and ither living expenses</td>  
+              <td><input type="text" name="clivingexpences" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Bank's Loan EMI</td>  
+              <td><input type="text" name="cbanksloanemi" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Other bank's Loan EMI</td>  
+              <td><input type="text" name="cotherbanksloanemi" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Credit card performance(5% of limit)</td>  
+              <td><input type="text" name="ccreditcardperformance" /></td>  
+       </tr>  
+       <tr>  
+              <td align="left">Total</td>  
+              <td><input type="text" name="cexptotal" /></td>  
+       </tr>
+        
+</table>
+<div class="row">
+    <input type="submit" value="Submit">
+  </div>
+
+   
+    </form>  
+</body>  
+</html>

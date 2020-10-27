@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Views &#8212; mysite 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="employee/views" href="employee_views.html" />
+    <link rel="prev" title="All about me" href="all-about-me.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-postman.views">
+<span id="views"></span><h1>Views<a class="headerlink" href="#module-postman.views" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="postman.views.ArchiveView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">ArchiveView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ArchiveView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark messages/conversations as archived.</p>
+<dl class="attribute">
+<dt id="postman.views.ArchiveView.field_bit">
+<code class="sig-name descname">field_bit</code><em class="property"> = 'archived'</em><a class="headerlink" href="#postman.views.ArchiveView.field_bit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ArchiveView.field_value">
+<code class="sig-name descname">field_value</code><em class="property"> = True</em><a class="headerlink" href="#postman.views.ArchiveView.field_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ArchiveView.success_msg">
+<code class="sig-name descname">success_msg</code><em class="property"> = 'Messages or conversations successfully archived.'</em><a class="headerlink" href="#postman.views.ArchiveView.success_msg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.ArchivesView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">ArchivesView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ArchivesView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of archived messages for the current user.</p>
+<p>Optional arguments and attributes: refer to InboxView.</p>
+<dl class="attribute">
+<dt id="postman.views.ArchivesView.folder_name">
+<code class="sig-name descname">folder_name</code><em class="property"> = 'archives'</em><a class="headerlink" href="#postman.views.ArchivesView.folder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ArchivesView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/archives.html'</em><a class="headerlink" href="#postman.views.ArchivesView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ArchivesView.view_name">
+<code class="sig-name descname">view_name</code><em class="property"> = 'archives'</em><a class="headerlink" href="#postman.views.ArchivesView.view_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.ComposeMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">ComposeMixin</code><a class="headerlink" href="#postman.views.ComposeMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Code common to the write and reply views.</p>
+<dl class="simple">
+<dt>Optional attributes:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">success_url</span></code>: where to redirect to after a successful POST
+<code class="docutils literal notranslate"><span class="pre">user_filter</span></code>: a filter for recipients
+<code class="docutils literal notranslate"><span class="pre">exchange_filter</span></code>: a filter for exchanges between a sender and a recipient
+<code class="docutils literal notranslate"><span class="pre">max</span></code>: an upper limit for the recipients number
+<code class="docutils literal notranslate"><span class="pre">auto_moderators</span></code>: a list of auto-moderation functions</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="postman.views.ComposeMixin.auto_moderators">
+<code class="sig-name descname">auto_moderators</code><em class="property"> = []</em><a class="headerlink" href="#postman.views.ComposeMixin.auto_moderators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ComposeMixin.exchange_filter">
+<code class="sig-name descname">exchange_filter</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.ComposeMixin.exchange_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ComposeMixin.form_valid">
+<code class="sig-name descname">form_valid</code><span class="sig-paren">(</span><em class="sig-param">form</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ComposeMixin.form_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ComposeMixin.get_context_data">
+<code class="sig-name descname">get_context_data</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ComposeMixin.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ComposeMixin.get_form_kwargs">
+<code class="sig-name descname">get_form_kwargs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ComposeMixin.get_form_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ComposeMixin.get_success_url">
+<code class="sig-name descname">get_success_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ComposeMixin.get_success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ComposeMixin.http_method_names">
+<code class="sig-name descname">http_method_names</code><em class="property"> = ['get', 'post']</em><a class="headerlink" href="#postman.views.ComposeMixin.http_method_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ComposeMixin.max">
+<code class="sig-name descname">max</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.ComposeMixin.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ComposeMixin.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.ComposeMixin.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ComposeMixin.user_filter">
+<code class="sig-name descname">user_filter</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.ComposeMixin.user_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.ConversationView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">ConversationView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ConversationView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a conversation.</p>
+<dl class="method">
+<dt id="postman.views.ConversationView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">thread_id</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ConversationView.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.DeleteView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">DeleteView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.DeleteView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark messages/conversations as deleted.</p>
+<dl class="attribute">
+<dt id="postman.views.DeleteView.field_bit">
+<code class="sig-name descname">field_bit</code><em class="property"> = 'deleted_at'</em><a class="headerlink" href="#postman.views.DeleteView.field_bit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.DeleteView.field_value">
+<code class="sig-name descname">field_value</code><em class="property"> = datetime.datetime(2019, 9, 22, 13, 21, 12, 37618, tzinfo=&lt;UTC&gt;)</em><a class="headerlink" href="#postman.views.DeleteView.field_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.DeleteView.success_msg">
+<code class="sig-name descname">success_msg</code><em class="property"> = 'Messages or conversations successfully deleted.'</em><a class="headerlink" href="#postman.views.DeleteView.success_msg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.DisplayMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">DisplayMixin</code><a class="headerlink" href="#postman.views.DisplayMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Code common to the by-message and by-conversation views.</p>
+<dl class="simple">
+<dt>Optional attributes:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">form_class</span></code>: the form class to use
+<code class="docutils literal notranslate"><span class="pre">formatters</span></code>: a 2-tuple of functions to prefill the subject and body fields
+<code class="docutils literal notranslate"><span class="pre">template_name</span></code>: the name of the template to use</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="postman.views.DisplayMixin.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.DisplayMixin.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.DisplayMixin.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#postman.views.DisplayMixin.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">postman.forms.QuickReplyForm</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.DisplayMixin.formatters">
+<code class="sig-name descname">formatters</code><em class="property"> = (&lt;function format_subject&gt;, None)</em><a class="headerlink" href="#postman.views.DisplayMixin.formatters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.DisplayMixin.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.DisplayMixin.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.DisplayMixin.get_context_data">
+<code class="sig-name descname">get_context_data</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.DisplayMixin.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.DisplayMixin.http_method_names">
+<code class="sig-name descname">http_method_names</code><em class="property"> = ['get']</em><a class="headerlink" href="#postman.views.DisplayMixin.http_method_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.DisplayMixin.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/view.html'</em><a class="headerlink" href="#postman.views.DisplayMixin.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.FolderMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">FolderMixin</code><a class="headerlink" href="#postman.views.FolderMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Code common to the folders.</p>
+<dl class="method">
+<dt id="postman.views.FolderMixin.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.FolderMixin.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.FolderMixin.get_context_data">
+<code class="sig-name descname">get_context_data</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.FolderMixin.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.FolderMixin.http_method_names">
+<code class="sig-name descname">http_method_names</code><em class="property"> = ['get']</em><a class="headerlink" href="#postman.views.FolderMixin.http_method_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.InboxView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">InboxView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.InboxView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of received messages for the current user.</p>
+<dl class="simple">
+<dt>Optional URLconf name-based argument:</dt><dd><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">option</span></code>: display option:</dt><dd><p>OPTION_MESSAGES to view all messages
+default to None to view only the last message for each conversation</p>
+</dd>
+</dl>
+</dd>
+<dt>Optional URLconf configuration attribute:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">template_name</span></code>: the name of the template to use</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="postman.views.InboxView.folder_name">
+<code class="sig-name descname">folder_name</code><em class="property"> = 'inbox'</em><a class="headerlink" href="#postman.views.InboxView.folder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.InboxView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/inbox.html'</em><a class="headerlink" href="#postman.views.InboxView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.InboxView.view_name">
+<code class="sig-name descname">view_name</code><em class="property"> = 'inbox'</em><a class="headerlink" href="#postman.views.InboxView.view_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.MarkReadView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">MarkReadView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.MarkReadView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark messages/conversations as read.</p>
+<dl class="attribute">
+<dt id="postman.views.MarkReadView.field_bit">
+<code class="sig-name descname">field_bit</code><em class="property"> = 'read_at'</em><a class="headerlink" href="#postman.views.MarkReadView.field_bit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.MarkReadView.field_value">
+<code class="sig-name descname">field_value</code><em class="property"> = datetime.datetime(2019, 9, 22, 13, 21, 12, 37711, tzinfo=&lt;UTC&gt;)</em><a class="headerlink" href="#postman.views.MarkReadView.field_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.MarkReadView.success_msg">
+<code class="sig-name descname">success_msg</code><em class="property"> = 'Messages or conversations successfully marked as read.'</em><a class="headerlink" href="#postman.views.MarkReadView.success_msg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.MarkUnreadView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">MarkUnreadView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.MarkUnreadView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revert messages/conversations from marked as read.</p>
+<dl class="attribute">
+<dt id="postman.views.MarkUnreadView.field_bit">
+<code class="sig-name descname">field_bit</code><em class="property"> = 'read_at'</em><a class="headerlink" href="#postman.views.MarkUnreadView.field_bit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.MarkUnreadView.success_msg">
+<code class="sig-name descname">success_msg</code><em class="property"> = 'Messages or conversations successfully marked as unread.'</em><a class="headerlink" href="#postman.views.MarkUnreadView.success_msg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.MessageView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">MessageView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.MessageView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display one specific message.</p>
+<dl class="method">
+<dt id="postman.views.MessageView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">message_id</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.MessageView.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.NamespaceMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">NamespaceMixin</code><a class="headerlink" href="#postman.views.NamespaceMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common code to manage the namespace.</p>
+<dl class="method">
+<dt id="postman.views.NamespaceMixin.render_to_response">
+<code class="sig-name descname">render_to_response</code><span class="sig-paren">(</span><em class="sig-param">context</em>, <em class="sig-param">**response_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.NamespaceMixin.render_to_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.ReplyView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">ReplyView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ReplyView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a form to compose a reply.</p>
+<dl class="simple">
+<dt>Optional attributes:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">form_class</span></code>: the form class to use
+<code class="docutils literal notranslate"><span class="pre">formatters</span></code>: a 2-tuple of functions to prefill the subject and body fields
+<code class="docutils literal notranslate"><span class="pre">autocomplete_channel</span></code>: a channel name
+<code class="docutils literal notranslate"><span class="pre">template_name</span></code>: the name of the template to use
++ those of ComposeMixin</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="postman.views.ReplyView.autocomplete_channel">
+<code class="sig-name descname">autocomplete_channel</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.ReplyView.autocomplete_channel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ReplyView.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">message_id</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ReplyView.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ReplyView.form_class">
+<code class="sig-name descname">form_class</code><a class="headerlink" href="#postman.views.ReplyView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">postman.forms.FullReplyForm</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ReplyView.formatters">
+<code class="sig-name descname">formatters</code><em class="property"> = (&lt;function format_subject&gt;, &lt;function format_body&gt;)</em><a class="headerlink" href="#postman.views.ReplyView.formatters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ReplyView.get_context_data">
+<code class="sig-name descname">get_context_data</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ReplyView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ReplyView.get_form_kwargs">
+<code class="sig-name descname">get_form_kwargs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ReplyView.get_form_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the keyword arguments for instantiating the form.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="postman.views.ReplyView.get_initial">
+<code class="sig-name descname">get_initial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.ReplyView.get_initial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the initial data to use for forms on this view.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.ReplyView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/reply.html'</em><a class="headerlink" href="#postman.views.ReplyView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.SentView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">SentView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.SentView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of sent messages for the current user.</p>
+<p>Optional arguments and attributes: refer to InboxView.</p>
+<dl class="attribute">
+<dt id="postman.views.SentView.folder_name">
+<code class="sig-name descname">folder_name</code><em class="property"> = 'sent'</em><a class="headerlink" href="#postman.views.SentView.folder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.SentView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/sent.html'</em><a class="headerlink" href="#postman.views.SentView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.SentView.view_name">
+<code class="sig-name descname">view_name</code><em class="property"> = 'sent'</em><a class="headerlink" href="#postman.views.SentView.view_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.TrashView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">TrashView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.TrashView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of deleted messages for the current user.</p>
+<p>Optional arguments and attributes: refer to InboxView.</p>
+<dl class="attribute">
+<dt id="postman.views.TrashView.folder_name">
+<code class="sig-name descname">folder_name</code><em class="property"> = 'trash'</em><a class="headerlink" href="#postman.views.TrashView.folder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.TrashView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/trash.html'</em><a class="headerlink" href="#postman.views.TrashView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.TrashView.view_name">
+<code class="sig-name descname">view_name</code><em class="property"> = 'trash'</em><a class="headerlink" href="#postman.views.TrashView.view_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.UndeleteView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">UndeleteView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.UndeleteView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revert messages/conversations from marked as deleted.</p>
+<dl class="attribute">
+<dt id="postman.views.UndeleteView.field_bit">
+<code class="sig-name descname">field_bit</code><em class="property"> = 'deleted_at'</em><a class="headerlink" href="#postman.views.UndeleteView.field_bit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.UndeleteView.success_msg">
+<code class="sig-name descname">success_msg</code><em class="property"> = 'Messages or conversations successfully recovered.'</em><a class="headerlink" href="#postman.views.UndeleteView.success_msg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.UpdateDualMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">UpdateDualMixin</code><a class="headerlink" href="#postman.views.UpdateDualMixin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="postman.views.UpdateMessageMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">UpdateMessageMixin</code><a class="headerlink" href="#postman.views.UpdateMessageMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Code common to the archive/delete/undelete actions.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">field_bit</span></code>: a part of the name of the field to update
+<code class="docutils literal notranslate"><span class="pre">success_msg</span></code>: the displayed text in case of success</p>
+</dd>
+<dt>Optional attributes:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">field_value</span></code>: the value to set in the field
+<code class="docutils literal notranslate"><span class="pre">success_url</span></code>: where to redirect to after a successful POST</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="postman.views.UpdateMessageMixin.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.UpdateMessageMixin.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.UpdateMessageMixin.field_value">
+<code class="sig-name descname">field_value</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.UpdateMessageMixin.field_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.UpdateMessageMixin.http_method_names">
+<code class="sig-name descname">http_method_names</code><em class="property"> = ['post']</em><a class="headerlink" href="#postman.views.UpdateMessageMixin.http_method_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.UpdateMessageMixin.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.UpdateMessageMixin.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.UpdateMessageMixin.success_url">
+<code class="sig-name descname">success_url</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.UpdateMessageMixin.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="postman.views.UpdateRecipientMixin">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">UpdateRecipientMixin</code><a class="headerlink" href="#postman.views.UpdateRecipientMixin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="postman.views.WriteView">
+<em class="property">class </em><code class="sig-prename descclassname">postman.views.</code><code class="sig-name descname">WriteView</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.WriteView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a form to compose a message.</p>
+<dl class="simple">
+<dt>Optional URLconf name-based argument:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">recipients</span></code>: a colon-separated list of usernames</p>
+</dd>
+<dt>Optional attributes:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">form_classes</span></code>: a 2-tuple of form classes
+<code class="docutils literal notranslate"><span class="pre">autocomplete_channels</span></code>: a channel name or a 2-tuple of names
+<code class="docutils literal notranslate"><span class="pre">template_name</span></code>: the name of the template to use
++ those of ComposeMixin</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="postman.views.WriteView.autocomplete_channels">
+<code class="sig-name descname">autocomplete_channels</code><em class="property"> = None</em><a class="headerlink" href="#postman.views.WriteView.autocomplete_channels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.WriteView.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.WriteView.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.WriteView.form_classes">
+<code class="sig-name descname">form_classes</code><em class="property"> = (&lt;class 'postman.forms.WriteForm'&gt;, &lt;class 'postman.forms.AnonymousWriteForm'&gt;)</em><a class="headerlink" href="#postman.views.WriteView.form_classes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="postman.views.WriteView.get_form_class">
+<code class="sig-name descname">get_form_class</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.WriteView.get_form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the form class to use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="postman.views.WriteView.get_form_kwargs">
+<code class="sig-name descname">get_form_kwargs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.WriteView.get_form_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the keyword arguments for instantiating the form.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="postman.views.WriteView.get_initial">
+<code class="sig-name descname">get_initial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#postman.views.WriteView.get_initial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the initial data to use for forms on this view.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="postman.views.WriteView.template_name">
+<code class="sig-name descname">template_name</code><em class="property"> = 'postman/write.html'</em><a class="headerlink" href="#postman.views.WriteView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mysite</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="all-about-me.html">All about me</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="employee_views.html">employee/views</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="all-about-me.html" title="previous chapter">All about me</a></li>
+      <li>Next: <a href="employee_views.html" title="next chapter">employee/views</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, tisha.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/modules/views.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

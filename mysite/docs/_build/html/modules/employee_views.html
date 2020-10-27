@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>employee/views &#8212; mysite 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Views" href="views.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-employee.views">
+<span id="employee-views"></span><h1>employee/views<a class="headerlink" href="#module-employee.views" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="employee.views.ATables">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">ATables</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.ATables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays list of clients’ accounts from the AccountTable data table.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">accounts</span></code>: all objects of AccountTable i.e. all the accounts of the bank.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table and all account objects from the AccountTable table that will be passed to the template</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.CRMList">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">CRMList</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.CRMList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays list of loan applications to the Client Relation Manager’s homepage that has been reviewed by the Form Reviewer and negotiated by the Negotiator but has not been confirmed yet.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan</span></code>: all objects of CSVReader i.e. all the loan applications</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan_am</span></code>: stores all the requested loan amount from all the loan applications</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mylist</span></code>: zips all the loan applications and their corresponding requested loan amount</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table and mylist</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.FRList">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">FRList</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.FRList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays list of loan applications to the Form Reviewer’s homepage that has been submitted by the clients but has not been reviewed yet.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan</span></code>: all objects of CSVReader i.e. all the loan applications</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table and all loan appliactions from the CSVReader table that will be passed to the template</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template_name</span></code>: the name of the template to use</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.LHistory">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">LHistory</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.LHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays loan history/list of loan applications that has been accepted or rejected in the past.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan_hist</span></code>: all objects of CSVReader i.e. all the loan applications</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table and all objects of CSVReader</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.NList">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">NList</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.NList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays list of loan applications to Negotiators’ homepage that has been reviewed by the Form Reviewer but has not been negotiated yet.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan</span></code>: all objects of CSVReader i.e. all the loan applications</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan_am</span></code>: stores all the requested loan amount from all the loan applications</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mylist</span></code>: zips all the loan applications and their corresponding requested loan amount</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table and mylist</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.crm_accept">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">crm_accept</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">loan_account_id_pk</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.crm_accept" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.crm_reject">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">crm_reject</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">loan_account_id_pk</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.crm_reject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.dashboard">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">dashboard</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.dashboard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the employee home page if it is a valid employee otherwise displays the login page.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template_name</span></code>: the name of the template to use</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the database that will be passed to the template</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid user from User table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user_list</span></code>: employee list from Employee table</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.defaulter">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">defaulter</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.defaulter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.form_reviewer_reject">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">form_reviewer_reject</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">CarLoanApplication_pk</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.form_reviewer_reject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.generatePrediction">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">generatePrediction</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">loan_id</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.generatePrediction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.getCSV">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">getCSV</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">loan_id</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.getCSV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the whole loan application to the employee(i.e., Form Reviewer, Negotiator, CRM) for further analysis.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">file_name</span></code>: specific loan application from CSVReader</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">df</span></code>: read the loan application(which is in CSV format) in pandas dataframe format</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">temp_list</span></code>: convert from pandas dataframe to list</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table and temp_list</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.interestRate">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">interestRate</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.interestRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.logout_emp">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">logout_emp</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.logout_emp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.nego_reject">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">nego_reject</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">CarLoanApplication_pk</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.nego_reject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.profile">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">profile</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="employee.views.tempChart">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">tempChart</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.tempChart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays all the graphs regarding loan distribution.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">user</span></code>: valid employee from Employee table</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">context</span></code>: holds the employee object from the Employee table</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="employee.views.update_amount">
+<code class="sig-prename descclassname">employee.views.</code><code class="sig-name descname">update_amount</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">CarLoanApplication_pk</em><span class="sig-paren">)</span><a class="headerlink" href="#employee.views.update_amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a modal to take input(negotiated amount for loan) from the Negotiator and updates the negotiated_amount field in that loan application object and redirects to Negotiator homepage.</p>
+<dl>
+<dt>Optional attributes:</dt><dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">loan</span></code>: specific loan application from CSVReader</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">nego_amount</span></code>: stores negotiated amount that has been submitted by Negotiator</div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mysite</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="all-about-me.html">All about me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">employee/views</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="views.html" title="previous chapter">Views</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, tisha.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/modules/employee_views.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

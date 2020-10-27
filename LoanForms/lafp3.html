@@ -1,0 +1,207 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  #table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#table2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+}
+</style>
+</head>
+
+<body>   
+	<h2 align="center"> Car Loan Application Form:</h2> 
+	<form action="loanApplicationForm.html">
+	
+    <form id="form1" runat="server">  
+    <div>                
+    </div>   
+     
+    
+<table id="table1"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="4" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Requested Loan details</th>
+       <tr>  
+              <td align="left">Applied Loan Amount</td>  
+              <td><input type="text" name="loanamot" /></td>  
+              <td align="left">Term</td>       
+              <td><input type="text" name="term" /></td>   
+       </tr>
+        <tr>  
+              <td align="left">Preferred EMI Amount</td>  
+              <td><input type="text" name="emiamt" /></td>  
+              <td align="left">Preferred EMI Date</td>       
+              <td><input type="text" name="emidate" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Benefitiary pay date</td>  
+              <td colspan="3"><input type="text" name="emiamt" /></td>  
+                 
+       </tr>  
+</table>
+
+<table id="table2"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="4" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Financing plan</th>
+       <tr>  
+              <td align="left">Car Price</td>  
+              <td><input type="text" name="price" /></td>  
+              <td align="left">Equity paid</td>       
+              <td><input type="text" name="equity" /></td>   
+       </tr>
+        <tr>  
+              <td align="left">Registration cost</td>  
+              <td><input type="text" name="regcost" /></td>  
+              <td align="left">Remainng equity to be paid</td>       
+              <td><input type="text" name="remequi" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Total</td>  
+              <td><input type="text" name="total" /></td>  
+              <td align="left">required Loan amount</td>       
+              <td><input type="text" name="reqmt" /></td>   
+       </tr>  
+       
+</table>
+
+<table id="table3"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="4" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Car Quotation</th>
+       <tr>  
+              <td align="left">Car Vendor</td>  
+              <td colspan="3"><input type="text" name="vendor" /></td>   
+       </tr>
+        <tr>  
+              <td  align="left">Address</td>  
+              <td colspan="3"><input type="text" name="addr" /></td>  
+              
+       </tr>  
+       <tr>  
+              <td  align="left">Phone Number</td>  
+              <td colspan="3"><input type="text" name="phonenum" /></td>  
+              
+       </tr>  
+       
+</table>
+
+
+<table id="table4"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="6" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Car details</th>
+       <tr>  
+              <td align="left">Car condition</td>  
+              <td colspan="5">
+              <input type="checkbox" name="vendor" value="reconditioned"/>Reconditioned
+              <input type="checkbox" name="vendor" value="brandnew"/>Brand New
+              <input type="checkbox" name="vendor" value="registered"/>Registered
+              </td>   
+       </tr>
+        <tr>  
+              <td  align="left">Brand</td>  
+              <td><input type="text" name="brand" /></td>
+              <td  align="left">Model</td>  
+              <td><input type="text" name="model" /></td>
+              <td  align="left">CC</td>  
+              <td><input type="text" name="cc" /></td>  
+              
+       </tr>  
+       <tr>  
+              <td  align="left">Manufacturing year</td>  
+              <td><input type="text" name="brand" /></td>
+              <td  align="left">Country of origin</td>  
+              <td><input type="text" name="model" /></td>
+              <td  align="left">Color</td>  
+              <td><input type="text" name="cc" /></td>  
+              
+       </tr>
+       <tr>  
+              <td  align="left">Chasis Number</td>  
+              <td><input type="text" name="brand" /></td>
+              <td  align="left">Engine number</td>  
+              <td><input type="text" name="model" /></td>
+              <td  align="left">Registration number</td>  
+              <td><input type="text" name="cc" /></td>  
+              
+       </tr>  
+       
+       
+</table>
+
+
+<div class="row">
+    <input type="submit" value="Submit">
+  </div>
+
+   
+    </form>  
+</body>  
+</html>

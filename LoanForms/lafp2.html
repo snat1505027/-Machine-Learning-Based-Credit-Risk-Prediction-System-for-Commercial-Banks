@@ -1,0 +1,504 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  #table2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#table2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+}
+</style>
+</head>
+
+<body>   
+	<h2 align="center"> Car Loan Application Form:</h2> 
+	<form action="lafp3.html">
+	
+    <form id="form1" runat="server">  
+    <div>                
+    </div>   
+     
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<tr>	
+    		<td align="left" class="style1">Your image:</td>
+    		<td class="style1"><input class="box__file" type="file" name="image" id="imgfile"  /><td>
+  			
+		</tr>
+       <tr>
+       		  <td align="left" class="style1">Requested amount:</td>
+              <td class="style1"><input type="text" name="amount" /></td>  
+       		  <td align="left" class="style1">Term</td>
+              <td class="style1"><input type="text" name="term" /></td>  
+       		  
+       </tr> 
+    </table>
+    <table id="table2"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">personal Information</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">First Name:</td>  
+              <td><input type="text" name="cfname" /></td>  
+              <td><input type="text" name="jfname" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Middle Name:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Last Name:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Date of Birth:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Sex</td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Male 
+		    	  <input type="radio" name="sex1" value="female1" /> Female  
+		      </td>  
+		      
+		      <td>
+            	  <input type="radio" name="sex2" value="male2" />Male 
+		    	  <input type="radio" name="sex2" value="female2" /> Female  
+		      </td>
+       </tr>  
+       <tr>  
+              <td align="left">Father's name:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Mother's name:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">National ID:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Passport:</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+         
+</table>
+
+<table id="table3"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">Employment Details</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>
+       <tr>  
+              <td  align="left" class="style1">Profession</td>  
+              <td>
+              		<input type="checkbox" name="employ" value="e11" />Salaried 
+		    	  	<input type="checkbox" name="employ" value="e12" />Professional
+		    	  	<input type="checkbox" name="employ" value="e13" />Business<br>
+		    	  	<input type="checkbox" name="employ" value="e14" /> Landlord
+		    	  	<input type="checkbox" name="employ" value="e15" />Housewife
+		    	  	<input type="checkbox" name="employ" value="e16" /> Other
+              </td>
+              <td>
+              		<input type="checkbox" name="employ" value="e21" />Salaried 
+		    	  	<input type="checkbox" name="employ" value="e22" />Professional
+		    	  	<input type="checkbox" name="employ" value="e23" />Business<br>
+		    	  	<input type="checkbox" name="employ" value="e24" /> Landlord
+		    	  	<input type="checkbox" name="employ" value="e25" />Housewife
+		    	  	<input type="checkbox" name="employ" value="e26" /> Other
+              </td>
+       </tr>    
+</table>
+
+<table id="table4"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">1. For Salaried Person</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Name of the organization</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Office Address</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Designation</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Department</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Division</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Join Date</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left">Service years</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>    
+       <tr>  
+              <td align="left">Employment status</td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Permanent 
+		    	  <input type="radio" name="sex1" value="female1" />Contractual
+		    	  <input type="radio" name="sex1" value="female1" />Part Time
+		      </td>  
+		      
+		      <td>
+            	  <input type="radio" name="sex1" value="male1" />Permanent 
+		    	  <input type="radio" name="sex1" value="female1" />Contractual
+		    	  <input type="radio" name="sex1" value="female1" />Part Time
+		      </td>
+       </tr>  
+       <tr>  
+              <td align="left">Salary Date</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Salary payment mode</td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Cash 
+		    	  <input type="radio" name="sex1" value="female1" />Bank
+		    	  <input type="radio" name="sex1" value="female1" />Bank and cash
+		    	  <input type="radio" name="sex1" value="female1" />Cheque
+		      </td>  
+		      <td>
+            	  <input type="radio" name="sex1" value="male1" />Cash 
+		    	  <input type="radio" name="sex1" value="female1" />Bank
+		    	  <input type="radio" name="sex1" value="female1" />Bank and cash
+		    	  <input type="radio" name="sex1" value="female1" />Cheque
+		      </td> 
+       </tr>  
+       
+         
+</table>
+
+<table id="table5"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">2. Businessman/Self Employed </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Name of the organization</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Office Address</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Designation</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Ownership status</td>  
+              <td>
+            	  <input type="radio" name="sex1" value="male1" />Propriertor
+		    	  <input type="radio" name="sex1" value="female1" />Partnership
+		    	  <input type="radio" name="sex1" value="female1" />Limited company
+		      </td>  
+		      
+		      <td>
+            	  <input type="radio" name="sex1" value="male1" />Propriertor
+		    	  <input type="radio" name="sex1" value="female1" />Partnership
+		    	  <input type="radio" name="sex1" value="female1" />Limited company
+		      </td>
+       </tr> 
+       <tr>  
+              <td align="left">Share holding position</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Business starting date</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Number of years in same business</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left">Number of employee</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>    
+        
+       <tr>  
+              <td align="left">Industry type</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Main product</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Main Banker</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Phone No</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+         
+</table>
+<table id="table6"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly income </th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">Gross salary</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Net salary</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Business Income</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Remmitance</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Existing Rental Income</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">1. Addess</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left">2. Address</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>    
+        
+       <tr>  
+              <td align="left">3. Address</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Main product</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Expected rental Income</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Interest Income</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr> 
+       <tr>  
+              <td align="left">Other Income</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left">1.</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left">2.</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+       <tr>  
+              <td align="left">Total</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+         
+</table>
+
+<table id="table7"  cellspacing="5px" cellpadding="5%"; align="centre" width = "100%"> 
+    	<th colspan="3" align="left" style="background-color: #42B3B5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white; width = 100%">Monthly expenditure</th>
+       <tr style="background-color: #2DE2E5;padding-top: 12px;padding-bottom: 12px;text-align: left;color: white;">
+       		<td>Particular</td>
+       		<td>Applicant</td>
+       		<td>Joint Applicant</td>
+       		
+       </tr>  
+       <tr>  
+              <td align="left">House rent</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>  
+                
+        </td>  
+       </tr>  
+       <tr>  
+              <td align="left">Utilites and ither living expenses</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Bank's Loan EMI</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td>   
+       </tr>  
+       <tr>  
+              <td align="left">Other bank's Loan EMI</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Credit card performance(5% of limit)</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>  
+       <tr>  
+              <td align="left">Total</td>  
+              <td><input type="text" name="Company Name" /></td>  
+              <td><input type="text" name="Company Name" /></td> 
+       </tr>
+        
+</table>
+<div class="row">
+    <input type="submit" value="Submit">
+  </div>
+
+   
+    </form>  
+</body>  
+</html>
